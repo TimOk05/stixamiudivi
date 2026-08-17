@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#102936" />
+    <meta name="description" content="Онлайн-занятия немецким с Ириной: для взрослых, работы, быта, экзаменов и переезда в Германию." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content="Ирина — немецкий для жизни и работы в Германии" />
+    <meta property="og:description" content="Онлайн-занятия 1:1 для взрослых, специалистов и тех, кто планирует или уже переехал в Германию." />
+    <meta property="og:image" content="https://timok05.github.io/stixamiudivi/german-with-irina/og.png" />
+    <meta property="og:image:width" content="1680" />
+    <meta property="og:image:height" content="945" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ирина — немецкий для жизни и работы в Германии" />
+    <meta name="twitter:description" content="Онлайн-занятия 1:1 для взрослых, специалистов и тех, кто планирует или уже переехал в Германию." />
+    <meta name="twitter:image" content="https://timok05.github.io/stixamiudivi/german-with-irina/og.png" />
+    <title>Ирина — немецкий для жизни и работы в Германии</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ink: #102936;
+        --ink-deep: #091b25;
+        --paper: #f7f2e8;
+        --paper-dim: #ece4d5;
+        --sage: #8faf9f;
+        --sage-deep: #517267;
+        --blue: #7693a5;
+        --coral: #e56b5d;
+        --gold: #e7b64b;
+        --line: rgba(16, 41, 54, 0.16);
+        --line-on-dark: rgba(247, 242, 232, 0.18);
+        --sans: "Manrope", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --serif: "Playfair Display", Georgia, serif;
+        --mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+        --wrap: min(1180px, calc(100% - 56px));
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: var(--sans);
+        line-height: 1.55;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        position: fixed;
+        z-index: -1;
+        inset: 0;
+        content: "";
+        opacity: .16;
+        pointer-events: none;
+        background-image: radial-gradient(rgba(16, 41, 54, .42) .42px, transparent .7px);
+        background-size: 6px 6px;
+        mix-blend-mode: multiply;
+      }
+      a { color: inherit; text-decoration: none; }
+      button { font: inherit; }
+      ::selection { color: var(--ink-deep); background: var(--gold); }
+      :focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+      .wrap { width: var(--wrap); margin: 0 auto; }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 18px;
+        color: currentColor;
+        font-family: var(--mono);
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: .13em;
+        line-height: 1.35;
+        text-transform: uppercase;
+      }
+      .eyebrow::before { width: 8px; height: 8px; border: 1px solid currentColor; border-radius: 50%; content: ""; }
+      h1, h2, h3, p { margin-top: 0; }
+      h1, h2, h3 { text-wrap: balance; }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        min-height: 52px;
+        padding: 14px 20px;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 800;
+        transition: transform .2s ease, color .2s ease, background .2s ease, border-color .2s ease;
+      }
+      .button:hover { transform: translateY(-2px); }
+      .button-primary { color: var(--ink-deep); background: var(--gold); box-shadow: 0 12px 28px rgba(231, 182, 75, .18); }
+      .button-primary:hover { background: #f3c85f; }
+      .button-secondary { color: var(--paper); border-color: rgba(247, 242, 232, .42); }
+      .button-secondary:hover { color: var(--gold); border-color: var(--gold); }
+
+      .hero {
+        position: relative;
+        color: var(--paper);
+        background: var(--ink);
+        overflow: hidden;
+      }
+      .hero::after {
+        position: absolute;
+        z-index: 0;
+        top: -230px;
+        right: -180px;
+        width: 730px;
+        height: 730px;
+        border: 1px solid rgba(143, 175, 159, .26);
+        border-radius: 50%;
+        box-shadow: 0 0 0 72px rgba(143, 175, 159, .035), 0 0 0 170px rgba(143, 175, 159, .02);
+        content: "";
+      }
+      .hero::before {
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        opacity: .34;
+        content: "";
+        background-image: linear-gradient(rgba(247, 242, 232, .11) 1px, transparent 1px), linear-gradient(90deg, rgba(247, 242, 232, .11) 1px, transparent 1px);
+        background-position: right -35px top -27px;
+        background-size: 98px 98px;
+        mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .8) 44%, black 100%);
+      }
+      .topbar {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 91px;
+        border-bottom: 1px solid var(--line-on-dark);
+      }
+      .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 16px; font-weight: 800; letter-spacing: -.04em; }
+      .brand-mark {
+        display: grid;
+        width: 32px;
+        height: 32px;
+        place-items: center;
+        color: var(--ink-deep);
+        background: var(--gold);
+        border-radius: 50%;
+        font-family: var(--serif);
+        font-size: 19px;
+      }
+      .topbar nav { display: flex; align-items: center; gap: 27px; color: rgba(247, 242, 232, .8); font-size: 12px; font-weight: 700; }
+      .topbar nav a { transition: color .2s ease; }
+      .topbar nav a:hover { color: var(--gold); }
+      .topbar .nav-contact { padding: 10px 15px; color: var(--ink-deep); background: var(--paper); border-radius: 999px; }
+      .topbar .nav-contact:hover { color: var(--ink-deep); background: var(--gold); }
+
+      .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr) 468px; gap: 50px; align-items: center; min-height: 638px; padding: 76px 0 74px; }
+      .hero-copy { padding: 10px 0; }
+      .hero-copy .eyebrow { color: var(--sage); }
+      h1 { max-width: 690px; margin-bottom: 27px; font-size: clamp(52px, 6vw, 82px); font-weight: 500; letter-spacing: -.07em; line-height: .98; }
+      h1 em { color: var(--sage); font-family: var(--serif); font-weight: 500; }
+      .hero-lead { max-width: 540px; margin-bottom: 32px; color: rgba(247, 242, 232, .77); font-size: 17px; line-height: 1.72; }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+      .hero-note { display: flex; align-items: center; gap: 9px; margin: 27px 0 0; color: rgba(247, 242, 232, .6); font-size: 12px; }
+      .hero-note b { color: var(--gold); font-size: 18px; line-height: 0; }
+
+      .route-card {
+        position: relative;
+        min-height: 474px;
+        padding: 28px;
+        border: 1px solid rgba(247, 242, 232, .18);
+        border-radius: 5px;
+        overflow: hidden;
+        background: linear-gradient(140deg, rgba(247, 242, 232, .095), rgba(247, 242, 232, .025));
+        box-shadow: 28px 28px 0 rgba(9, 27, 37, .19);
+      }
+      .route-card::before {
+        position: absolute;
+        inset: 0;
+        content: "";
+        opacity: .17;
+        background-image: linear-gradient(rgba(247, 242, 232, .25) 1px, transparent 1px), linear-gradient(90deg, rgba(247, 242, 232, .25) 1px, transparent 1px);
+        background-size: 58px 58px;
+      }
+      .route-label { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; color: rgba(247, 242, 232, .66); font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+      .route-label b { color: var(--gold); font-weight: 500; }
+      .route-line {
+        position: absolute;
+        z-index: 1;
+        top: 88px;
+        left: 51%;
+        width: 158px;
+        height: 372px;
+        border: 31px solid var(--sage);
+        border-right-color: transparent;
+        border-radius: 50% 0 0 50%;
+        transform: rotate(18deg);
+        opacity: .93;
+      }
+      .route-line::after { position: absolute; top: -31px; left: 45px; width: 1px; height: 372px; content: ""; background: var(--paper); opacity: .82; transform: rotate(-2deg); }
+      .route-point { position: absolute; z-index: 2; display: grid; width: 58px; height: 58px; place-items: center; color: var(--ink-deep); background: var(--paper); border-radius: 50%; font-family: var(--mono); font-size: 12px; box-shadow: 0 0 0 8px rgba(247, 242, 232, .11); }
+      .route-point::after { position: absolute; left: 69px; width: max-content; color: var(--paper); font-family: var(--sans); font-size: 12px; font-weight: 700; white-space: nowrap; }
+      .route-point.a { top: 117px; left: 58px; }
+      .route-point.a::after { content: "уверенность"; }
+      .route-point.b { top: 242px; right: 70px; color: var(--paper); background: var(--coral); box-shadow: 0 0 0 8px rgba(229, 107, 93, .12); }
+      .route-point.b::after { left: auto; right: 68px; content: "работа и быт"; }
+      .route-point.c { bottom: 48px; left: 122px; color: var(--ink-deep); background: var(--gold); box-shadow: 0 0 0 8px rgba(231, 182, 75, .12); }
+      .route-point.c::after { content: "Германия"; }
+      .route-chip { position: absolute; z-index: 2; right: 25px; bottom: 28px; padding: 8px 10px; border: 1px solid rgba(247, 242, 232, .36); color: rgba(247, 242, 232, .76); font-family: var(--mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+
+      .intro { display: grid; grid-template-columns: 1fr minmax(0, 1.3fr); gap: 70px; padding: 132px 0 116px; }
+      .intro h2, .section-title h2, .method-copy h2, .contact-copy h2 { margin-bottom: 0; font-family: var(--serif); font-size: clamp(38px, 4.5vw, 62px); font-weight: 500; letter-spacing: -.065em; line-height: 1.01; }
+      .intro h2 em, .section-title h2 em, .method-copy h2 em, .contact-copy h2 em { color: var(--sage-deep); font-weight: 500; }
+      .intro-copy { align-self: end; max-width: 550px; margin: 0; color: #49606a; font-size: 17px; line-height: 1.72; }
+
+      .who { padding: 0 0 122px; }
+      .section-title { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 38px; }
+      .section-title .eyebrow { color: var(--sage-deep); }
+      .section-title > p { max-width: 348px; margin: 0 0 4px; color: #60737b; font-size: 14px; }
+      .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+      .audience-card { min-height: 252px; padding: 30px 29px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .2s ease, color .2s ease; }
+      .audience-card:hover { color: var(--paper); background: var(--ink); }
+      .audience-number { display: block; margin-bottom: 66px; color: var(--coral); font-family: var(--mono); font-size: 11px; }
+      .audience-card h3 { margin-bottom: 11px; font-family: var(--serif); font-size: 28px; font-weight: 500; letter-spacing: -.055em; line-height: 1.1; }
+      .audience-card p { max-width: 288px; margin: 0; color: #597078; font-size: 13px; }
+      .audience-card:hover p { color: rgba(247, 242, 232, .69); }
+
+      .principles { color: var(--paper); background: var(--ink-deep); }
+      .principles-inner { display: grid; grid-template-columns: .89fr 1.11fr; gap: 70px; padding: 122px 0; }
+      .principles .eyebrow { color: var(--sage); }
+      .principles h2 { max-width: 470px; margin-bottom: 25px; font-family: var(--serif); font-size: clamp(40px, 4.2vw, 60px); font-weight: 500; letter-spacing: -.065em; line-height: 1.01; }
+      .principles h2 em { color: var(--gold); font-weight: 500; }
+      .principles-copy { max-width: 470px; color: rgba(247, 242, 232, .68); font-size: 15px; }
+      .principle-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line-on-dark); }
+      .principle-list li { display: grid; grid-template-columns: 56px 1fr; gap: 18px; padding: 24px 0; border-bottom: 1px solid var(--line-on-dark); }
+      .principle-list span { color: var(--gold); font-family: var(--mono); font-size: 11px; }
+      .principle-list h3 { margin: 0 0 7px; font-size: 15px; font-weight: 800; letter-spacing: -.02em; }
+      .principle-list p { margin: 0; color: rgba(247, 242, 232, .61); font-size: 13px; }
+
+      .method { display: grid; grid-template-columns: .9fr 1.1fr; gap: 86px; align-items: center; padding: 128px 0; }
+      .method-copy .eyebrow { color: var(--sage-deep); }
+      .method-copy h2 { margin-bottom: 25px; }
+      .method-copy > p { max-width: 400px; margin: 0; color: #587078; font-size: 15px; }
+      .steps { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+      .steps li { display: grid; grid-template-columns: 72px 1fr; gap: 21px; padding: 24px 0; border-top: 1px solid var(--line); }
+      .steps li:last-child { border-bottom: 1px solid var(--line); }
+      .step-number { display: grid; width: 43px; height: 43px; place-items: center; color: var(--ink); border: 1px solid var(--sage); border-radius: 50%; font-family: var(--mono); font-size: 11px; }
+      .steps h3 { margin: 2px 0 7px; font-family: var(--serif); font-size: 26px; font-weight: 500; letter-spacing: -.055em; line-height: 1; }
+      .steps p { margin: 0; color: #60747b; font-size: 13px; }
+
+      .contact { padding: 0 0 91px; }
+      .contact-box { position: relative; display: grid; grid-template-columns: 1.08fr .92fr; gap: 55px; padding: 58px 63px; overflow: hidden; color: var(--paper); background: var(--sage-deep); }
+      .contact-box::after { position: absolute; right: -32px; bottom: -86px; width: 330px; height: 330px; border: 1px solid rgba(247, 242, 232, .42); border-radius: 50%; box-shadow: 0 0 0 43px rgba(247, 242, 232, .08), 0 0 0 118px rgba(247, 242, 232, .05); content: ""; }
+      .contact-copy, .contact-aside { position: relative; z-index: 1; }
+      .contact-copy .eyebrow { color: var(--paper); }
+      .contact-copy h2 { max-width: 610px; }
+      .contact-copy h2 em { color: var(--gold); }
+      .contact-aside { align-self: end; }
+      .contact-aside p { max-width: 365px; margin-bottom: 22px; color: rgba(247, 242, 232, .76); font-size: 14px; }
+      .contact-aside small { display: block; margin-top: 16px; color: rgba(247, 242, 232, .58); font-size: 11px; }
+      .contact .button { background: var(--paper); color: var(--ink); }
+      .contact .button:hover { background: var(--gold); }
+
+      footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 0 31px; color: #6b7d82; font-size: 11px; }
+      footer .brand { color: var(--ink); }
+      footer .brand-mark { width: 26px; height: 26px; font-size: 16px; }
+      footer a { border-bottom: 1px solid currentColor; }
+
+      @media (max-width: 900px) {
+        :root { --wrap: min(100% - 40px, 660px); }
+        .topbar nav { gap: 17px; }
+        .hero-grid, .intro, .principles-inner, .method, .contact-box { grid-template-columns: 1fr; }
+        .hero-grid { gap: 43px; min-height: auto; padding: 67px 0 69px; }
+        .route-card { min-height: 417px; max-width: 520px; width: 100%; }
+        .intro, .principles-inner, .method { gap: 42px; }
+        .intro { padding: 94px 0 83px; }
+        .audience-grid { grid-template-columns: 1fr; }
+        .audience-card { min-height: 200px; }
+        .audience-number { margin-bottom: 37px; }
+        .section-title { display: block; }
+        .section-title > p { margin-top: 19px; }
+        .principles-inner { padding: 91px 0; }
+        .method { padding: 95px 0; }
+        .contact-box { gap: 29px; padding: 45px 36px; }
+      }
+      @media (max-width: 610px) {
+        :root { --wrap: min(100% - 32px, 500px); }
+        .topbar { min-height: 74px; }
+        .topbar nav a:not(.nav-contact) { display: none; }
+        .topbar .nav-contact { padding: 9px 13px; }
+        h1 { font-size: clamp(47px, 13vw, 63px); }
+        .hero-lead { font-size: 15px; }
+        .route-card { min-height: 372px; padding: 21px; }
+        .route-line { top: 75px; left: 48%; width: 126px; height: 296px; border-width: 25px; }
+        .route-line::after { top: -25px; left: 35px; height: 298px; }
+        .route-point { width: 48px; height: 48px; font-size: 10px; }
+        .route-point.a { top: 101px; left: 29px; }
+        .route-point.b { top: 208px; right: 35px; }
+        .route-point.c { bottom: 35px; left: 80px; }
+        .route-point::after { left: 56px; font-size: 10px; }
+        .route-point.b::after { right: 56px; }
+        .route-chip { right: 18px; bottom: 18px; }
+        .intro h2, .section-title h2, .method-copy h2, .contact-copy h2 { font-size: 39px; }
+        .intro-copy { font-size: 15px; }
+        .section-title { margin-bottom: 28px; }
+        .principle-list li { grid-template-columns: 38px 1fr; gap: 13px; }
+        .method { gap: 39px; }
+        .steps li { grid-template-columns: 55px 1fr; gap: 15px; }
+        .steps h3 { font-size: 24px; }
+        .contact { padding-bottom: 53px; }
+        .contact-box { padding: 36px 26px; }
+        footer { align-items: flex-start; flex-direction: column; gap: 14px; }
+      }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section id="top" class="hero">
+        <div class="topbar wrap">
+          <a class="brand" href="#top" aria-label="Ирина — на главную"><span class="brand-mark">И</span><span>Немецкий с Ириной</span></a>
+          <nav aria-label="Основная навигация">
+            <a href="#for-you">Кому подойдёт</a>
+            <a href="#approach">Подход</a>
+            <a class="nav-contact" href="https://t.me/german_with_irina" target="_blank" rel="noreferrer">Написать в Telegram</a>
+          </nav>
+        </div>
+        <div class="hero-grid wrap">
+          <div class="hero-copy">
+            <p class="eyebrow">Онлайн-занятия 1:1 · взрослым и специалистам</p>
+            <h1>Немецкий, с которым <em>жизнь в Германии</em> становится понятнее.</h1>
+            <p class="hero-lead">Для тех, кому язык нужен не «когда-нибудь», а чтобы спокойно говорить с коллегами, решать повседневные вопросы и чувствовать себя увереннее в новой стране.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="https://t.me/german_with_irina" target="_blank" rel="noreferrer">Написать Ирине <span aria-hidden="true">↗</span></a>
+              <a class="button button-secondary" href="#approach">Как проходят занятия <span aria-hidden="true">↓</span></a>
+            </div>
+            <p class="hero-note"><b aria-hidden="true">•</b> Без перегруза. С уважением к вашему темпу и цели.</p>
+          </div>
+          <aside class="route-card" aria-label="Путь изучения немецкого: уверенность, работа и быт, Германия">
+            <div class="route-label"><span>личный маршрут</span><b>DE / 01</b></div>
+            <div class="route-line" aria-hidden="true"></div>
+            <div class="route-point a">01</div>
+            <div class="route-point b">02</div>
+            <div class="route-point c">03</div>
+            <span class="route-chip">говорить, а не зубрить</span>
+          </aside>
+        </div>
+      </section>
+
+      <section class="intro wrap" aria-labelledby="intro-title">
+        <div>
+          <p class="eyebrow">Не идеальный немецкий — а живой</p>
+          <h2 id="intro-title">От «я всё забыл»<br />к <em>«я говорю».</em></h2>
+        </div>
+        <p class="intro-copy">Ирина помогает выстроить язык как понятную систему: без ощущения, что вы тонете в правилах, и с опорой на ситуации, которые действительно встречаются в вашей жизни и работе.</p>
+      </section>
+
+      <section id="for-you" class="who wrap" aria-labelledby="for-you-title">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Кому подойдут занятия</p>
+            <h2 id="for-you-title">Немецкий под вашу<br /><em>реальную задачу.</em></h2>
+          </div>
+          <p>Индивидуальный формат позволяет не идти по чужой программе, а двигаться в сторону того, что важно вам сейчас.</p>
+        </div>
+        <div class="audience-grid">
+          <article class="audience-card">
+            <span class="audience-number">01 / EXAM</span>
+            <h3>Подготовиться<br />к экзамену</h3>
+            <p>Собрать знания в систему, убрать хаос и готовиться с ясным планом.</p>
+          </article>
+          <article class="audience-card">
+            <span class="audience-number">02 / WORK</span>
+            <h3>Увереннее<br />в работе</h3>
+            <p>Общаться с коллегами и клиентами, понимать рабочие ситуации и не теряться в разговоре.</p>
+          </article>
+          <article class="audience-card">
+            <span class="audience-number">03 / LIFE</span>
+            <h3>Спокойнее<br />в Германии</h3>
+            <p>Разбираться с повседневными задачами и чувствовать больше самостоятельности после переезда.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="approach" class="principles" aria-labelledby="approach-title">
+        <div class="principles-inner wrap">
+          <div>
+            <p class="eyebrow">Подход Ирины</p>
+            <h2 id="approach-title">Системно, но <em>по‑человечески.</em></h2>
+            <p class="principles-copy">На занятиях есть структура и место для живого языка: вопросов, ваших рабочих кейсов и ситуаций, в которых хочется звучать уверенно.</p>
+          </div>
+          <ol class="principle-list">
+            <li><span>01</span><div><h3>От вашей цели, а не от шаблона</h3><p>Учитываются уровень, сфера деятельности и то, для чего вам нужен немецкий сейчас.</p></div></li>
+            <li><span>02</span><div><h3>Язык, который можно применить</h3><p>Фокус на том, чтобы не только знать правило, но и использовать его в речи.</p></div></li>
+            <li><span>03</span><div><h3>Темп, в котором можно дойти</h3><p>Без давления и перегруза — с понятными шагами и бережной обратной связью.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="method wrap" aria-labelledby="method-title">
+        <div class="method-copy">
+          <p class="eyebrow">Как это устроено</p>
+          <h2 id="method-title">Ясный путь —<br /><em>меньше тревоги.</em></h2>
+          <p>Занятия проходят онлайн один на один. Это пространство, где можно ошибаться, спрашивать и постепенно начать говорить свободнее.</p>
+        </div>
+        <ol class="steps">
+          <li><span class="step-number">01</span><div><h3>Определяем цель</h3><p>Обсуждаем ваш уровень, запрос и ситуации, в которых немецкий нужен в первую очередь.</p></div></li>
+          <li><span class="step-number">02</span><div><h3>Собираем личную систему</h3><p>Выстраиваем занятия вокруг нужной вам лексики, грамматики, практики и темпа.</p></div></li>
+          <li><span class="step-number">03</span><div><h3>Закрепляем в речи</h3><p>Регулярно превращаем знания в навык: говорим, разбираем и замечаем прогресс.</p></div></li>
+        </ol>
+      </section>
+
+      <section class="contact wrap" aria-labelledby="contact-title">
+        <div class="contact-box">
+          <div class="contact-copy">
+            <p class="eyebrow">Первый шаг — просто написать</p>
+            <h2 id="contact-title">Расскажите, <em>зачем вам немецкий.</em></h2>
+          </div>
+          <div class="contact-aside">
+            <p>Ирина подскажет подробнее о формате и поможет понять, с чего лучше начать именно в вашей ситуации.</p>
+            <a class="button" href="https://t.me/german_with_irina" target="_blank" rel="noreferrer">@german_with_irina <span aria-hidden="true">↗</span></a>
+            <small>Telegram · онлайн-занятия 1:1</small>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="wrap">
+      <a class="brand" href="#top"><span class="brand-mark">И</span><span>Немецкий с Ириной</span></a>
+      <span>Онлайн-занятия для взрослых · Германия</span>
+      <a href="https://t.me/german_with_irina" target="_blank" rel="noreferrer">Telegram</a>
+    </footer>
+  </body>
+</html>
