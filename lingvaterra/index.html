@@ -1,0 +1,918 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081b2e">
+  <title>Корпоративный английский для бизнеса | LingvaTerra</title>
+  <meta name="description" content="Корпоративный английский для рабочих задач и как бенефит для сотрудников. Программа под цели бизнеса, сопровождение и прозрачная отчётность.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="LingvaTerra — корпоративный английский для бизнеса">
+  <meta property="og:description" content="Обучение английскому, спроектированное под задачи команды и бизнеса.">
+  <meta property="og:image" content="https://timok05.github.io/stixamiudivi/lingvaterra/og.png">
+  <meta property="og:image:width" content="1680">
+  <meta property="og:image:height" content="945">
+  <style>
+    :root {
+      --navy: #071a2c;
+      --navy-deep: #04111e;
+      --ink: #102a39;
+      --lime: #c8ff63;
+      --lime-soft: #e6ffab;
+      --paper: #f6f4ed;
+      --sand: #e9e4d8;
+      --mist: #dbe4df;
+      --teal: #94bdb2;
+      --slate: #5f7480;
+      --line: rgba(15, 42, 57, .16);
+      --line-light: rgba(246, 244, 237, .19);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+    body::before {
+      position: fixed;
+      z-index: -2;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+      opacity: .17;
+      background-image: radial-gradient(rgba(7, 26, 44, .35) .45px, transparent .6px);
+      background-size: 5px 5px;
+      mix-blend-mode: multiply;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button { cursor: pointer; }
+    ::selection { background: var(--lime); color: var(--navy); }
+    :focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
+
+    .shell { width: min(1180px, calc(100% - 64px)); margin: 0 auto; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--slate);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      width: 8px;
+      height: 8px;
+      content: "";
+      border: 1px solid currentColor;
+      border-radius: 50%;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-weight: 500; letter-spacing: -.055em; }
+    h2 {
+      margin-bottom: 0;
+      font-family: var(--serif);
+      font-size: clamp(39px, 5vw, 68px);
+      line-height: .98;
+    }
+    .display-italic {
+      color: #456f68;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -.07em;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      min-height: 51px;
+      padding: 14px 19px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 750;
+      letter-spacing: -.01em;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button strong { font-family: var(--serif); font-size: 21px; font-weight: 400; line-height: 0; }
+    .button-primary { background: var(--lime); color: var(--navy-deep); box-shadow: 0 11px 30px rgba(104, 155, 46, .22); }
+    .button-primary:hover { background: #dcff96; }
+    .button-dark { background: var(--navy); color: var(--paper); }
+    .button-dark:hover { background: #173649; }
+    .button-outline { border-color: rgba(246, 244, 237, .4); color: var(--paper); }
+    .button-outline:hover { border-color: var(--lime); color: var(--lime); }
+    .button-link {
+      min-height: auto;
+      padding: 0 0 5px;
+      border: 0;
+      border-radius: 0;
+      border-bottom: 1px solid currentColor;
+      color: var(--ink);
+      font-size: 13px;
+    }
+    .button-link:hover { color: #3c7469; }
+
+    .site-header {
+      position: relative;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 86px;
+      color: var(--paper);
+    }
+    .top-wrap { position: relative; background: var(--navy); color: var(--paper); overflow: clip; }
+    .top-wrap::before,
+    .top-wrap::after {
+      position: absolute;
+      content: "";
+      pointer-events: none;
+    }
+    .top-wrap::before {
+      top: -250px;
+      right: -150px;
+      width: 680px;
+      height: 680px;
+      border: 1px solid rgba(200, 255, 99, .22);
+      border-radius: 50%;
+      box-shadow: 0 0 0 60px rgba(200, 255, 99, .035), 0 0 0 150px rgba(200, 255, 99, .02);
+    }
+    .top-wrap::after {
+      inset: 0;
+      opacity: .32;
+      background-image: linear-gradient(rgba(219, 228, 223, .12) 1px, transparent 1px), linear-gradient(90deg, rgba(219, 228, 223, .12) 1px, transparent 1px);
+      background-position: right 80px top -8px;
+      background-size: 90px 90px;
+      mask-image: linear-gradient(90deg, transparent 0%, transparent 42%, #000 68%);
+    }
+    .logo {
+      display: inline-flex;
+      align-items: baseline;
+      position: relative;
+      color: var(--paper);
+      font-family: var(--serif);
+      font-size: 25px;
+      line-height: 1;
+      letter-spacing: -.07em;
+    }
+    .logo .accent { color: var(--lime); font-style: italic; }
+    .logo sup { margin-left: 4px; color: var(--lime); font-family: var(--sans); font-size: 8px; letter-spacing: 0; }
+    .nav { display: flex; align-items: center; gap: 29px; }
+    .nav a:not(.nav-cta) {
+      color: rgba(246, 244, 237, .78);
+      font-size: 12px;
+      transition: color .2s ease;
+    }
+    .nav a:not(.nav-cta):hover { color: var(--lime); }
+    .nav-cta {
+      padding: 10px 15px;
+      border: 1px solid rgba(200, 255, 99, .72);
+      border-radius: 999px;
+      color: var(--lime);
+      font-size: 12px;
+      font-weight: 700;
+      transition: background .2s ease, color .2s ease;
+    }
+    .nav-cta:hover { background: var(--lime); color: var(--navy); }
+    .nav-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      padding: 10px 5px;
+      border: 0;
+      background: none;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 28px;
+      height: 1px;
+      margin: 6px auto;
+      background: var(--lime);
+      transition: transform .2s ease, opacity .2s ease;
+    }
+
+    .hero { position: relative; z-index: 1; padding: 74px 0 66px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .94fr) minmax(430px, .86fr);
+      align-items: center;
+      gap: clamp(45px, 8vw, 125px);
+      min-height: 585px;
+    }
+    .hero .eyebrow { color: var(--teal); }
+    .hero h1 {
+      max-width: 720px;
+      margin: 0 0 28px;
+      color: var(--paper);
+      font-family: var(--serif);
+      font-size: clamp(52px, 5.65vw, 86px);
+      line-height: .92;
+    }
+    .hero h1 em {
+      position: relative;
+      color: var(--lime);
+      font-style: italic;
+      font-weight: 400;
+    }
+    .hero h1 em::after {
+      position: absolute;
+      bottom: -8px;
+      left: 4%;
+      width: 93%;
+      height: 6px;
+      content: "";
+      background: var(--lime);
+      border-radius: 50%;
+      transform: rotate(-2deg);
+    }
+    .hero-copy > p:not(.eyebrow) {
+      max-width: 525px;
+      margin-bottom: 34px;
+      color: rgba(246, 244, 237, .76);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+    .hero-actions .button-outline { min-width: 210px; }
+    .trust-line {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin: 35px 0 0;
+      color: rgba(246, 244, 237, .57);
+      font-size: 11px;
+    }
+    .trust-line::before {
+      width: 25px;
+      height: 1px;
+      content: "";
+      background: var(--lime);
+    }
+
+    .program-stage { position: relative; min-height: 485px; }
+    .orbit {
+      position: absolute;
+      inset: 16px 12px 15px 7px;
+      border: 1px solid rgba(200, 255, 99, .24);
+      border-radius: 50% 48% 52% 50%;
+      transform: rotate(-10deg);
+    }
+    .orbit::before,
+    .orbit::after {
+      position: absolute;
+      content: "";
+      border-radius: 50%;
+    }
+    .orbit::before {
+      top: 20%;
+      right: -4px;
+      width: 10px;
+      height: 10px;
+      background: var(--lime);
+      box-shadow: 0 0 0 8px rgba(200, 255, 99, .13);
+    }
+    .orbit::after {
+      bottom: 9%;
+      left: 11%;
+      width: 7px;
+      height: 7px;
+      background: var(--teal);
+    }
+    .program-card {
+      position: absolute;
+      top: 52px;
+      right: 0;
+      width: min(100%, 450px);
+      padding: 25px 26px 23px;
+      border: 1px solid rgba(246, 244, 237, .25);
+      border-radius: 5px;
+      background: rgba(8, 31, 49, .88);
+      box-shadow: 0 28px 65px rgba(0, 0, 0, .28);
+      backdrop-filter: blur(9px);
+      transform: rotate(2.5deg);
+    }
+    .card-top { display: flex; align-items: start; justify-content: space-between; gap: 15px; padding-bottom: 21px; border-bottom: 1px solid var(--line-light); }
+    .card-kicker { margin: 0 0 5px; color: var(--teal); font-size: 9px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .card-title { margin: 0; color: var(--paper); font-family: var(--serif); font-size: 27px; line-height: 1; letter-spacing: -.05em; }
+    .card-index {
+      display: grid;
+      width: 41px;
+      height: 41px;
+      place-items: center;
+      border: 1px solid rgba(200, 255, 99, .55);
+      border-radius: 50%;
+      color: var(--lime);
+      font-family: var(--serif);
+      font-size: 18px;
+      font-style: italic;
+    }
+    .program-list { display: grid; gap: 11px; margin: 20px 0 0; }
+    .program-row {
+      display: grid;
+      grid-template-columns: 7px 1fr auto;
+      align-items: center;
+      gap: 11px;
+      min-height: 41px;
+      padding: 0 10px;
+      border-left: 1px solid rgba(246, 244, 237, .18);
+      background: rgba(246, 244, 237, .045);
+    }
+    .program-row > i { display: block; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); }
+    .program-row:nth-child(2) > i { background: var(--teal); }
+    .program-row:nth-child(3) > i { background: #f4d990; }
+    .program-row span { color: rgba(246, 244, 237, .91); font-size: 12px; }
+    .program-row b { color: rgba(246, 244, 237, .52); font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .stage-note {
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      max-width: 206px;
+      padding: 16px 18px;
+      border-left: 2px solid var(--lime);
+      background: rgba(246, 244, 237, .96);
+      color: var(--navy);
+      font-size: 12px;
+      line-height: 1.4;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, .16);
+      transform: rotate(-3deg);
+    }
+    .stage-note b { display: block; margin-bottom: 4px; color: #39776c; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+    .metrics {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      width: min(920px, 100%);
+      margin: 40px 0 0;
+      border-top: 1px solid var(--line-light);
+      border-left: 1px solid var(--line-light);
+    }
+    .metric { min-height: 105px; padding: 18px 22px; border-right: 1px solid var(--line-light); border-bottom: 1px solid var(--line-light); }
+    .metric strong { display: block; color: var(--lime); font-family: var(--serif); font-size: 35px; font-weight: 400; letter-spacing: -.06em; line-height: 1; }
+    .metric span { display: block; max-width: 150px; margin-top: 7px; color: rgba(246, 244, 237, .65); font-size: 11px; line-height: 1.35; }
+
+    .statement { padding: 148px 0 132px; }
+    .statement-grid { display: grid; grid-template-columns: .98fr .76fr; align-items: end; gap: clamp(48px, 11vw, 155px); }
+    .statement h2 { max-width: 680px; color: var(--ink); }
+    .statement h2 .display-italic { color: #458076; }
+    .statement-copy { padding-bottom: 3px; }
+    .statement-copy p { max-width: 400px; margin: 0 0 23px; color: #5d6d72; font-size: 16px; line-height: 1.73; }
+    .statement-signal {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: #39766d;
+      font-size: 11px;
+      font-weight: 780;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+    .statement-signal::before { width: 36px; height: 2px; content: ""; background: var(--lime); }
+
+    .formats { padding: 0 0 140px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 47px; }
+    .section-head h2 { max-width: 690px; }
+    .section-head > p { max-width: 300px; margin: 0 0 5px; color: #627078; font-size: 14px; line-height: 1.65; }
+    .format-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .format-card {
+      position: relative;
+      display: flex;
+      min-height: 402px;
+      flex-direction: column;
+      padding: 29px;
+      overflow: hidden;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, .22);
+      transition: background .25s ease;
+    }
+    .format-card:hover { background: #edf0e7; }
+    .format-card::after {
+      position: absolute;
+      right: -43px;
+      bottom: -51px;
+      width: 178px;
+      height: 178px;
+      content: "";
+      border: 1px solid rgba(57, 118, 109, .28);
+      border-radius: 50%;
+    }
+    .format-card:nth-child(2)::after { border-radius: 36% 64% 67% 33% / 50% 40% 60% 50%; transform: rotate(35deg); }
+    .format-number { margin-bottom: 38px; color: #4d877d; font-family: var(--serif); font-size: 18px; font-style: italic; }
+    .format-tag { position: relative; z-index: 1; margin: 0 0 13px; color: #517179; font-size: 10px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .format-card h3 { position: relative; z-index: 1; max-width: 410px; margin: 0 0 16px; color: var(--ink); font-family: var(--serif); font-size: clamp(31px, 3.4vw, 45px); line-height: .98; }
+    .format-card > p:not(.format-tag) { position: relative; z-index: 1; max-width: 420px; margin: 0 0 25px; color: #627178; font-size: 14px; line-height: 1.67; }
+    .format-card .button-link { position: relative; z-index: 1; align-self: flex-start; margin-top: auto; }
+
+    .method { position: relative; padding: 129px 0 130px; overflow: hidden; background: var(--mist); }
+    .method::after {
+      position: absolute;
+      right: -190px;
+      bottom: -230px;
+      width: 590px;
+      height: 590px;
+      content: "";
+      border: 1px solid rgba(7, 26, 44, .13);
+      border-radius: 50%;
+      box-shadow: 0 0 0 55px rgba(7, 26, 44, .03), 0 0 0 142px rgba(7, 26, 44, .025);
+    }
+    .method-grid { position: relative; z-index: 1; display: grid; grid-template-columns: .78fr 1.22fr; gap: clamp(48px, 11vw, 150px); }
+    .method-intro h2 { max-width: 420px; }
+    .method-intro > p:last-child { max-width: 355px; margin: 25px 0 0; color: #596c70; font-size: 15px; line-height: 1.7; }
+    .method-list { margin: 3px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .method-list li { display: grid; grid-template-columns: 73px 1fr; gap: 22px; padding: 23px 0 25px; border-bottom: 1px solid var(--line); }
+    .method-list .num { color: #417a70; font-family: var(--serif); font-size: 18px; font-style: italic; }
+    .method-list h3 { margin: 0 0 7px; color: var(--ink); font-family: var(--serif); font-size: 27px; line-height: 1; }
+    .method-list p { max-width: 490px; margin: 0; color: #5b6c72; font-size: 14px; line-height: 1.6; }
+
+    .outcome { position: relative; padding: 131px 0 125px; overflow: hidden; background: var(--navy-deep); color: var(--paper); }
+    .outcome::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      opacity: .28;
+      background-image: linear-gradient(rgba(219, 228, 223, .12) 1px, transparent 1px), linear-gradient(90deg, rgba(219, 228, 223, .12) 1px, transparent 1px);
+      background-size: 82px 82px;
+      mask-image: linear-gradient(90deg, transparent 0, #000 45%, transparent 100%);
+    }
+    .outcome-grid { position: relative; z-index: 1; display: grid; grid-template-columns: .92fr 1.08fr; gap: clamp(55px, 12vw, 160px); align-items: end; }
+    .outcome .eyebrow { color: var(--teal); }
+    .outcome h2 { max-width: 610px; color: var(--paper); }
+    .outcome h2 .display-italic { color: var(--lime); }
+    .outcome-items { display: grid; gap: 0; border-top: 1px solid var(--line-light); }
+    .outcome-item { display: grid; grid-template-columns: 34px 1fr; gap: 14px; padding: 21px 0; border-bottom: 1px solid var(--line-light); }
+    .outcome-item b { color: var(--lime); font-family: var(--serif); font-size: 21px; font-style: italic; font-weight: 400; }
+    .outcome-item p { margin: 0; color: rgba(246, 244, 237, .86); font-size: 15px; line-height: 1.55; }
+
+    .proof { padding: 137px 0 120px; }
+    .proof-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(50px, 11vw, 150px); align-items: center; }
+    .proof-presentation { position: relative; min-height: 355px; }
+    .proof-figure {
+      position: absolute;
+      inset: 7px 20px 0 0;
+      border-radius: 47% 53% 49% 51% / 49% 44% 56% 51%;
+      background: #467d75;
+      transform: rotate(-5deg);
+    }
+    .proof-figure::before {
+      position: absolute;
+      top: 45px;
+      left: 62px;
+      width: 205px;
+      height: 205px;
+      content: "";
+      border: 1px solid rgba(246, 244, 237, .55);
+      border-radius: 50%;
+    }
+    .proof-figure::after {
+      position: absolute;
+      right: 54px;
+      bottom: 47px;
+      width: 104px;
+      height: 104px;
+      content: "";
+      border-radius: 20px;
+      background: var(--lime);
+      transform: rotate(28deg);
+    }
+    .proof-stamp {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 185px;
+      padding: 19px;
+      background: var(--paper);
+      box-shadow: 0 14px 30px rgba(4, 17, 30, .16);
+      transform: rotate(5deg);
+    }
+    .proof-stamp span { display: block; color: #487c73; font-size: 9px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .proof-stamp strong { display: block; margin-top: 7px; color: var(--navy); font-family: var(--serif); font-size: 31px; font-style: italic; font-weight: 400; line-height: 1; }
+    .proof-copy h2 { max-width: 540px; }
+    .proof-copy > p:not(.eyebrow) { max-width: 500px; margin: 25px 0 0; color: #5f7075; font-size: 16px; line-height: 1.7; }
+    .proof-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 29px 0 0; }
+    .proof-points div { padding-top: 12px; border-top: 1px solid var(--line); color: #4d626a; font-size: 10px; line-height: 1.45; }
+    .proof-points b { display: block; margin-bottom: 4px; color: #3e776e; font-family: var(--serif); font-size: 20px; font-style: italic; font-weight: 400; }
+
+    .partners { padding-bottom: 130px; }
+    .partners-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 60px;
+      align-items: center;
+      padding: 58px 7%;
+      background: #f1d986;
+    }
+    .partners-card .eyebrow { color: #67704c; }
+    .partners-card h2 { max-width: 700px; color: var(--navy); font-size: clamp(37px, 4vw, 57px); }
+    .partners-card p:not(.eyebrow) { max-width: 650px; margin: 20px 0 0; color: #4b5541; font-size: 15px; line-height: 1.7; }
+    .partners-card .button { min-width: 195px; }
+
+    .contact { padding: 0 0 104px; }
+    .contact-card {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: clamp(45px, 9vw, 115px);
+      min-height: 510px;
+      padding: 70px 8%;
+      background: var(--navy);
+      color: var(--paper);
+    }
+    .contact-card .eyebrow { color: var(--teal); }
+    .contact-card h2 { max-width: 520px; color: var(--paper); font-size: clamp(40px, 4.6vw, 65px); }
+    .contact-card h2 .display-italic { color: var(--lime); }
+    .contact-copy > p:not(.eyebrow) { max-width: 360px; margin: 24px 0 0; color: rgba(246, 244, 237, .7); font-size: 14px; line-height: 1.68; }
+    .inquiry-type { min-height: 20px; margin: 0 0 10px; color: var(--lime); font-size: 10px; font-weight: 780; letter-spacing: .12em; text-transform: uppercase; }
+    .request-form { display: grid; gap: 16px; align-content: start; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .request-form label { display: grid; gap: 7px; color: rgba(246, 244, 237, .75); font-size: 11px; }
+    .request-form input,
+    .request-form textarea {
+      width: 100%;
+      padding: 10px 1px 12px;
+      border: 0;
+      border-bottom: 1px solid rgba(246, 244, 237, .36);
+      border-radius: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--paper);
+      transition: border-color .2s ease;
+      resize: vertical;
+    }
+    .request-form input:focus,
+    .request-form textarea:focus { border-color: var(--lime); }
+    .request-form input::placeholder,
+    .request-form textarea::placeholder { color: rgba(246, 244, 237, .33); }
+    .request-form .button { justify-self: start; margin-top: 9px; }
+    .form-disclaimer { max-width: 385px; margin: 1px 0 0; color: rgba(246, 244, 237, .45); font-size: 10px; line-height: 1.45; }
+    .form-success { display: grid; align-content: center; min-height: 280px; }
+    .form-success[hidden] { display: none; }
+    .form-success .success-mark { display: grid; width: 45px; height: 45px; place-items: center; border: 1px solid var(--lime); border-radius: 50%; color: var(--lime); font-family: var(--serif); font-size: 26px; font-style: italic; }
+    .form-success h3 { margin: 20px 0 11px; color: var(--paper); font-family: var(--serif); font-size: 38px; line-height: .98; }
+    .form-success p { max-width: 440px; margin: 0 0 20px; color: rgba(246, 244, 237, .73); font-size: 14px; line-height: 1.65; }
+
+    .site-footer { display: grid; grid-template-columns: 1fr auto auto; gap: 32px; align-items: end; padding: 0 0 31px; color: #607078; font-size: 11px; }
+    .site-footer .logo { color: var(--navy); }
+    .site-footer a:not(.logo) { padding-bottom: 3px; border-bottom: 1px solid rgba(16, 42, 57, .31); transition: color .2s ease, border-color .2s ease; }
+    .site-footer a:not(.logo):hover { border-color: #3a786e; color: #3a786e; }
+    .site-footer small { grid-column: 1 / -1; padding-top: 17px; border-top: 1px solid var(--line); color: #8c9798; font-size: 9px; }
+
+    @media (max-width: 950px) {
+      .shell { width: min(100% - 40px, 680px); }
+      .nav-toggle { display: block; position: relative; z-index: 3; }
+      .nav {
+        position: absolute;
+        top: 69px;
+        right: 0;
+        display: none;
+        width: min(260px, calc(100vw - 40px));
+        padding: 20px;
+        border: 1px solid rgba(246, 244, 237, .18);
+        background: #0d2639;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, .26);
+      }
+      .nav.is-open { display: grid; gap: 17px; }
+      .nav a:not(.nav-cta) { color: var(--paper); }
+      .nav-cta { justify-self: start; margin-top: 4px; }
+      .hero { padding: 37px 0 58px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 35px; min-height: 0; }
+      .hero-copy { max-width: 620px; }
+      .program-stage { width: min(100%, 580px); min-height: 440px; margin-left: auto; }
+      .metrics { margin-top: 57px; }
+      .statement { padding: 102px 0; }
+      .statement-grid,
+      .method-grid,
+      .outcome-grid,
+      .proof-grid,
+      .contact-card { grid-template-columns: 1fr; gap: 43px; }
+      .statement-copy { max-width: 520px; }
+      .section-head { display: grid; align-items: start; gap: 21px; }
+      .method { padding: 95px 0; }
+      .outcome { padding: 95px 0; }
+      .proof { padding: 100px 0; }
+      .proof-presentation { width: min(100%, 510px); }
+      .partners { padding-bottom: 100px; }
+      .partners-card { grid-template-columns: 1fr; gap: 31px; }
+      .contact-card { min-height: 0; padding: 52px 9%; }
+    }
+
+    @media (max-width: 610px) {
+      .shell { width: calc(100% - 32px); }
+      .site-header { min-height: 72px; }
+      .logo { font-size: 23px; }
+      .hero h1 { font-size: clamp(47px, 13vw, 67px); }
+      .hero-copy > p:not(.eyebrow) { font-size: 15px; }
+      .hero-actions { display: grid; justify-items: start; }
+      .hero-actions .button-outline { min-width: 0; }
+      .program-stage { min-height: 365px; }
+      .program-card { top: 27px; padding: 20px 18px; transform: rotate(1.5deg); }
+      .card-title { font-size: 23px; }
+      .stage-note { bottom: 0; max-width: 190px; left: 0; padding: 13px; }
+      .metrics { grid-template-columns: 1fr; margin-top: 45px; }
+      .metric { min-height: 83px; display: grid; grid-template-columns: 90px 1fr; align-items: center; gap: 10px; padding: 15px; }
+      .metric span { margin: 0; }
+      .statement { padding: 82px 0; }
+      h2 { font-size: 43px; }
+      .formats { padding-bottom: 88px; }
+      .format-grid { grid-template-columns: 1fr; }
+      .format-card { min-height: 337px; padding: 25px; }
+      .format-number { margin-bottom: 28px; }
+      .method { padding: 78px 0; }
+      .method-list li { grid-template-columns: 46px 1fr; gap: 10px; }
+      .method-list h3 { font-size: 24px; }
+      .outcome { padding: 79px 0; }
+      .proof { padding: 80px 0; }
+      .proof-presentation { min-height: 282px; }
+      .proof-figure::before { top: 36px; left: 47px; width: 160px; height: 160px; }
+      .proof-figure::after { right: 38px; bottom: 37px; width: 78px; height: 78px; }
+      .proof-stamp { width: 158px; padding: 15px; }
+      .proof-points { grid-template-columns: 1fr; gap: 0; }
+      .proof-points div { display: grid; grid-template-columns: 72px 1fr; align-items: center; }
+      .proof-points b { margin: 0; }
+      .partners { padding-bottom: 82px; }
+      .partners-card { padding: 41px 27px; }
+      .contact { padding-bottom: 72px; }
+      .contact-card { padding: 43px 25px; }
+      .form-row { grid-template-columns: 1fr; gap: 16px; }
+      .site-footer { grid-template-columns: 1fr 1fr; gap: 18px; }
+      .site-footer a:not(.logo) { justify-self: start; }
+      .site-footer small { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-wrap">
+    <header class="site-header shell">
+      <a class="logo" href="#top" aria-label="LingvaTerra — на главную"><span>lingva</span><span class="accent">terra</span><sup>LLC</sup></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Открыть меню">
+        <span></span><span></span>
+      </button>
+      <nav id="site-nav" class="nav" aria-label="Основная навигация">
+        <a href="#formats" data-nav-link>Форматы</a>
+        <a href="#approach" data-nav-link>Подход</a>
+        <a href="#partners" data-nav-link>Партнёрам</a>
+        <a class="nav-cta" href="#contact" data-inquiry="Задача для команды" data-nav-link>Обсудить задачу</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="top" class="hero shell">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">ООО «ЛингваТерра» · корпоративный английский</p>
+            <h1>Английский, который <em>работает</em> на задачи бизнеса.</h1>
+            <p>Проектируем обучение под цели компании — чтобы сотрудники уверенно использовали английский в рабочих ситуациях, а бизнес получал понятную отдачу от развития команды.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#contact" data-inquiry="Задача для команды">Обсудить задачу <strong>↗</strong></a>
+              <a class="button button-outline" href="#partners" data-inquiry="Партнёрство">Обсудить партнёрство <strong>↗</strong></a>
+            </div>
+            <div class="trust-line">Не курс ради курса, а развитие под рабочий контекст.</div>
+          </div>
+
+          <div class="program-stage" aria-label="Визуальная схема корпоративной программы">
+            <div class="orbit" aria-hidden="true"></div>
+            <article class="program-card">
+              <div class="card-top">
+                <div>
+                  <p class="card-kicker">Контур программы</p>
+                  <p class="card-title">English at work</p>
+                </div>
+                <span class="card-index">01</span>
+              </div>
+              <div class="program-list">
+                <div class="program-row"><i></i><span>Встречи и переговоры</span><b>week 02</b></div>
+                <div class="program-row"><i></i><span>Переписка с клиентами</span><b>week 04</b></div>
+                <div class="program-row"><i></i><span>Презентации и проекты</span><b>week 06</b></div>
+              </div>
+            </article>
+            <div class="stage-note"><b>Фокус</b>Язык встроен в реальные рабочие ситуации команды.</div>
+          </div>
+        </div>
+        <div class="metrics" aria-label="Ключевые показатели LingvaTerra">
+          <div class="metric"><strong>4 года</strong><span>помогаем людям говорить увереннее</span></div>
+          <div class="metric"><strong>600+</strong><span>студентов уже прошли обучение</span></div>
+          <div class="metric"><strong>15—200</strong><span>сотрудников в компаниях наших клиентов</span></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <section class="statement shell">
+    <div class="statement-grid">
+      <div>
+        <p class="eyebrow">О подходе</p>
+        <h2>Не стандартные курсы — <span class="display-italic">обучение</span>, встроенное в задачи компании.</h2>
+      </div>
+      <div class="statement-copy">
+        <p>Сначала разбираемся, зачем английский нужен именно вашей команде. Затем проектируем программу, организуем процесс и сопровождаем обучение так, чтобы руководителю и HR было легко видеть динамику.</p>
+        <div class="statement-signal">Цель → программа → результат</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="formats" class="formats shell">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Два сценария работы</p>
+        <h2>Английский под разные задачи <span class="display-italic">бизнеса.</span></h2>
+      </div>
+      <p>Подбираем формат, темп и содержание обучения под реальность именно вашей компании.</p>
+    </div>
+    <div class="format-grid">
+      <article class="format-card">
+        <span class="format-number">01</span>
+        <p class="format-tag">Для рабочих задач</p>
+        <h3>Английский в ежедневной работе.</h3>
+        <p>Для команд, которым язык нужен в переговорах, переписке, встречах, презентациях и международных проектах. Программу строим вокруг реальных задач, ролей и профессиональной лексики.</p>
+        <a class="button button-link" href="#contact" data-inquiry="Подобрать формат для рабочих задач">Подобрать формат <strong>↘</strong></a>
+      </article>
+      <article class="format-card">
+        <span class="format-number">02</span>
+        <p class="format-tag">Как бенефит для команды</p>
+        <h3>Развитие, которое ценят сотрудники.</h3>
+        <p>Корпоративное обучение, усиливающее ценность работодателя. Помогаем выстроить удобный для команды формат без лишней организационной нагрузки на HR.</p>
+        <a class="button button-link" href="#contact" data-inquiry="Английский как бенефит для сотрудников">Обсудить обучение <strong>↘</strong></a>
+      </article>
+    </div>
+  </section>
+
+  <section id="approach" class="method">
+    <div class="method-grid shell">
+      <div class="method-intro">
+        <p class="eyebrow">Как мы работаем</p>
+        <h2>Берём организацию обучения <span class="display-italic">на себя.</span></h2>
+        <p>LingvaTerra становится партнёром, а не ещё одним подрядчиком: прозрачный процесс, понятная коммуникация и внимание к результату.</p>
+      </div>
+      <ol class="method-list">
+        <li>
+          <span class="num">01</span>
+          <div><h3>Начинаем с цели</h3><p>Учитываем задачи бизнеса, роли сотрудников и стартовый уровень команды.</p></div>
+        </li>
+        <li>
+          <span class="num">02</span>
+          <div><h3>Проектируем понятный процесс</h3><p>Согласовываем программу, формат, расписание и точки контроля до запуска.</p></div>
+        </li>
+        <li>
+          <span class="num">03</span>
+          <div><h3>Снижаем нагрузку на HR</h3><p>Организуем обучение без постоянного ручного администрирования со стороны вашей команды.</p></div>
+        </li>
+        <li>
+          <span class="num">04</span>
+          <div><h3>Показываем динамику</h3><p>Предоставляем прозрачную отчётность и корректируем программу, если меняются задачи компании.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="outcome">
+    <div class="outcome-grid shell">
+      <div>
+        <p class="eyebrow">Что получает компания</p>
+        <h2>Польза для бизнеса. Комфорт <span class="display-italic">для команды.</span></h2>
+      </div>
+      <div class="outcome-items">
+        <div class="outcome-item"><b>01</b><p>Сотрудники увереннее используют английский в реальных рабочих ситуациях.</p></div>
+        <div class="outcome-item"><b>02</b><p>HR получает управляемый процесс вместо дополнительной операционной нагрузки.</p></div>
+        <div class="outcome-item"><b>03</b><p>Руководитель видит, как обучение связано с задачами и развитием команды.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof shell">
+    <div class="proof-grid">
+      <div class="proof-presentation" aria-hidden="true">
+        <div class="proof-figure"></div>
+        <div class="proof-stamp"><span>Доверие в цифрах</span><strong>600+ студентов</strong></div>
+      </div>
+      <div class="proof-copy">
+        <p class="eyebrow">Опыт LingvaTerra</p>
+        <h2>Развитие команды можно <span class="display-italic">доверить.</span></h2>
+        <p>За 4 года LingvaTerra обучила более 600 студентов и сотрудничала с компаниями численностью от 15 до 200 сотрудников. Сейчас мы активно развиваем корпоративное направление и открыты к новым проектам.</p>
+        <div class="proof-points">
+          <div><b>4</b>года практики</div>
+          <div><b>600+</b>обученных студентов</div>
+          <div><b>15—200</b>сотрудников у клиентов</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="partners" class="partners shell">
+    <div class="partners-card">
+      <div>
+        <p class="eyebrow">Партнёрское направление</p>
+        <h2>Усилим ваше предложение <span class="display-italic">для клиентов.</span></h2>
+        <p>Открыты к сотрудничеству с HR-консультантами, рекрутерами и бизнес-консультантами. Если у ваших клиентов есть запрос на развитие команды, международные роли или корпоративный английский как бенефит — обсудим удобный формат партнёрства.</p>
+      </div>
+      <a class="button button-dark" href="#contact" data-inquiry="Партнёрство">Обсудить партнёрство <strong>↗</strong></a>
+    </div>
+  </section>
+
+  <section id="contact" class="contact shell">
+    <div class="contact-card">
+      <div class="contact-copy">
+        <p class="eyebrow">Первый шаг</p>
+        <h2>Расскажите, какую задачу должен решить английский <span class="display-italic">в вашей компании.</span></h2>
+        <p>На первой встрече разберём вводные и предложим подходящий формат корпоративного обучения.</p>
+      </div>
+      <div>
+        <p id="inquiry-type" class="inquiry-type" aria-live="polite">Тема: задача для команды</p>
+        <form id="request-form" class="request-form">
+          <input id="topic-input" type="hidden" name="topic" value="Задача для команды">
+          <div class="form-row">
+            <label>Имя и должность<input required name="name" autocomplete="name" placeholder="Например: Анна, HRD"></label>
+            <label>Компания<input required name="company" autocomplete="organization" placeholder="Название компании"></label>
+          </div>
+          <label>Телефон или email<input required name="contact" autocomplete="email" placeholder="Как с вами связаться"></label>
+          <label>Опишите задачу<textarea required name="message" rows="4" placeholder="Что важно для вашей команды и бизнеса?"></textarea></label>
+          <button class="button button-primary" type="submit">Отправить запрос <strong>↗</strong></button>
+          <p class="form-disclaimer">Это демонстрационный концепт сайта. В рабочей версии заявка будет отправляться в согласованный канал LingvaTerra.</p>
+        </form>
+        <div id="form-success" class="form-success" hidden tabindex="-1" role="status">
+          <span class="success-mark">↗</span>
+          <h3>Спасибо за запрос.</h3>
+          <p>В демо-версии форма показывает сценарий получения заявки. В рабочем сайте её можно подключить к почте, CRM или привычному мессенджеру команды.</p>
+          <button id="form-reset" class="button button-outline" type="button">Отправить ещё один запрос <strong>↺</strong></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer shell">
+    <a class="logo" href="#top" aria-label="LingvaTerra — на главную"><span>lingva</span><span class="accent">terra</span><sup>LLC</sup></a>
+    <a href="#formats">Форматы обучения</a>
+    <a href="#contact" data-inquiry="Задача для команды">Обсудить задачу</a>
+    <small>© 2026 ООО «ЛингваТерра». Концепт сайта-визитки.</small>
+  </footer>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector(".nav-toggle");
+      var nav = document.querySelector(".nav");
+      var navLinks = document.querySelectorAll("[data-nav-link]");
+      var inquiryType = document.getElementById("inquiry-type");
+      var topicInput = document.getElementById("topic-input");
+      var inquiryLinks = document.querySelectorAll("[data-inquiry]");
+      var form = document.getElementById("request-form");
+      var success = document.getElementById("form-success");
+      var reset = document.getElementById("form-reset");
+
+      function closeMenu() {
+        nav.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Открыть меню");
+      }
+
+      toggle.addEventListener("click", function () {
+        var isOpen = nav.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", String(isOpen));
+        toggle.setAttribute("aria-label", isOpen ? "Закрыть меню" : "Открыть меню");
+      });
+
+      navLinks.forEach(function (link) {
+        link.addEventListener("click", closeMenu);
+      });
+
+      inquiryLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+          var theme = link.getAttribute("data-inquiry");
+          if (theme) {
+            inquiryType.textContent = "Тема: " + theme;
+            topicInput.value = theme;
+          }
+        });
+      });
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        form.hidden = true;
+        success.hidden = false;
+        success.focus();
+      });
+
+      reset.addEventListener("click", function () {
+        form.reset();
+        inquiryType.textContent = "Тема: задача для команды";
+        topicInput.value = "Задача для команды";
+        form.hidden = false;
+        success.hidden = true;
+        form.querySelector("input[name='name']").focus();
+      });
+    }());
+  </script>
+</body>
+</html>
