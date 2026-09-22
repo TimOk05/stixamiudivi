@@ -41,39 +41,13 @@ if (quickMenuButton && quickMenu) {
   });
 }
 
-document.querySelectorAll(".menu-card").forEach((card) => {
-  const actionLabel = card.querySelector(".menu-action small");
-  if (!actionLabel) return;
-
-  card.addEventListener("toggle", () => {
-    actionLabel.textContent = card.open ? "Скрыть варианты" : "Открыть варианты";
-  });
-});
-
 const reviewTiles = Array.from(document.querySelectorAll(".review-tile"));
-const moreReviewsButton = document.querySelector("#reviews-more");
 const reviewDialog = document.querySelector("#review-dialog");
 const reviewDialogImage = document.querySelector("#review-dialog-image");
 const reviewDialogClose = document.querySelector(".review-dialog-close");
 
-function revealReviews() {
-  const hiddenReviews = reviewTiles.filter((tile) => tile.hidden);
-  hiddenReviews.slice(0, 8).forEach((tile) => {
-    tile.hidden = false;
-  });
-
-  if (!reviewTiles.some((tile) => tile.hidden)) {
-    moreReviewsButton?.setAttribute("hidden", "");
-  }
-}
-
-if (!reviewTiles.some((tile) => tile.hidden)) {
-  moreReviewsButton?.setAttribute("hidden", "");
-}
-
-moreReviewsButton?.addEventListener("click", revealReviews);
-
 reviewTiles.forEach((tile) => {
+  tile.hidden = false;
   tile.addEventListener("click", () => {
     if (!reviewDialog || !reviewDialogImage) return;
     reviewDialogImage.src = tile.dataset.reviewSrc || "";
