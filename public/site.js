@@ -17,6 +17,78 @@ if (menuButton && menu) {
   });
 }
 
+const quickMenuButton = document.querySelector("#mobile-quick-button");
+const quickMenu = document.querySelector("#mobile-quick-nav");
+
+function closeQuickMenu() {
+  if (!quickMenuButton || !quickMenu) return;
+  quickMenu.classList.remove("is-open");
+  quickMenuButton.setAttribute("aria-expanded", "false");
+}
+
+if (quickMenuButton && quickMenu) {
+  quickMenuButton.addEventListener("click", () => {
+    const isOpen = quickMenu.classList.toggle("is-open");
+    quickMenuButton.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  quickMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeQuickMenu);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeQuickMenu();
+  });
+}
+
+document.querySelectorAll(".menu-card").forEach((card) => {
+  const actionLabel = card.querySelector(".menu-action small");
+  if (!actionLabel) return;
+
+  card.addEventListener("toggle", () => {
+    actionLabel.textContent = card.open ? "Скрыть варианты" : "Открыть варианты";
+  });
+});
+
+const reviewTiles = Array.from(document.querySelectorAll(".review-tile"));
+const moreReviewsButton = document.querySelector("#reviews-more");
+const reviewDialog = document.querySelector("#review-dialog");
+const reviewDialogImage = document.querySelector("#review-dialog-image");
+const reviewDialogClose = document.querySelector(".review-dialog-close");
+
+function revealReviews() {
+  const hiddenReviews = reviewTiles.filter((tile) => tile.hidden);
+  hiddenReviews.slice(0, 8).forEach((tile) => {
+    tile.hidden = false;
+  });
+
+  if (!reviewTiles.some((tile) => tile.hidden)) {
+    moreReviewsButton?.setAttribute("hidden", "");
+  }
+}
+
+if (!reviewTiles.some((tile) => tile.hidden)) {
+  moreReviewsButton?.setAttribute("hidden", "");
+}
+
+moreReviewsButton?.addEventListener("click", revealReviews);
+
+reviewTiles.forEach((tile) => {
+  tile.addEventListener("click", () => {
+    if (!reviewDialog || !reviewDialogImage) return;
+    reviewDialogImage.src = tile.dataset.reviewSrc || "";
+    reviewDialogImage.alt = tile.dataset.reviewAlt || "Отзыв клиента";
+    reviewDialog.showModal();
+    reviewDialogClose?.focus();
+  });
+});
+
+reviewDialogClose?.addEventListener("click", () => reviewDialog?.close());
+
+reviewDialog?.addEventListener("click", (event) => {
+  if (event.target === reviewDialog) reviewDialog.close();
+});
+
 const orderForm = document.querySelector("#order-form");
 const successPanel = document.querySelector("#form-success");
 const newOrderButton = document.querySelector("#new-order");
