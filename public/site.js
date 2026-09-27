@@ -104,26 +104,44 @@ reviewsNext?.addEventListener("click", () => {
 if (reviewsGallery) {
   let pointerId = null;
   let startX = 0;
+  let startY = 0;
   let startScrollLeft = 0;
   let dragged = false;
+  let dragAxis = null;
 
   reviewsGallery.addEventListener("pointerdown", (event) => {
-    if (event.pointerType === "touch" || event.button !== 0) return;
+    if (event.button !== 0) return;
     pointerId = event.pointerId;
     startX = event.clientX;
+    startY = event.clientY;
     startScrollLeft = reviewsGallery.scrollLeft;
     dragged = false;
+    dragAxis = null;
     reviewsGallery.setPointerCapture(pointerId);
-    reviewsGallery.classList.add("is-dragging");
   });
 
   reviewsGallery.addEventListener("pointermove", (event) => {
     if (event.pointerId !== pointerId) return;
-    const distance = event.clientX - startX;
-    if (Math.abs(distance) > 4) dragged = true;
-    if (!dragged) return;
+    const distanceX = event.clientX - startX;
+    const distanceY = event.clientY - startY;
+
+    if (!dragAxis) {
+      if (Math.max(Math.abs(distanceX), Math.abs(distanceY)) < 8) return;
+      dragAxis = Math.abs(distanceX) > Math.abs(distanceY) ? "horizontal" : "vertical";
+
+      if (dragAxis === "vertical") {
+        if (reviewsGallery.hasPointerCapture(pointerId)) reviewsGallery.releasePointerCapture(pointerId);
+        pointerId = null;
+        return;
+      }
+
+      reviewsGallery.classList.add("is-dragging");
+    }
+
+    if (dragAxis !== "horizontal") return;
+    dragged = true;
     event.preventDefault();
-    reviewsGallery.scrollLeft = startScrollLeft - distance;
+    reviewsGallery.scrollLeft = startScrollLeft - distanceX;
   });
 
   const finishReviewDrag = (event) => {
@@ -131,6 +149,7 @@ if (reviewsGallery) {
     if (dragged) suppressReviewOpenUntil = Date.now() + 180;
     if (reviewsGallery.hasPointerCapture(pointerId)) reviewsGallery.releasePointerCapture(pointerId);
     pointerId = null;
+    dragAxis = null;
     reviewsGallery.classList.remove("is-dragging");
   };
 
