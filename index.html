@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="public/site-enhancements.css">
     <link rel="stylesheet" href="public/site-carousel.css">
     <link rel="stylesheet" href="public/site-commerce.css">
+    <link rel="stylesheet" href="public/site-presentation.css">
   </head>
   <body>
     <a class="skip-link" href="#content">Перейти к содержанию</a>
@@ -23,7 +24,7 @@
         <a class="brand" href="#top" aria-label="Стихами удиви — на главную"><span>Стихами</span><em>удиви</em><i>✦</i></a>
         <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span></button>
         <nav class="main-nav" aria-label="Основная навигация">
-          <a href="#poetic-menu">Поэтическое меню</a><a href="#works">Работы</a><a href="#formatting">Оформление</a><a href="#guarantees">Гарантии</a><a href="#price">Прайс</a><a class="nav-order" href="#order">Заказать</a>
+          <a href="#poetic-menu">Поэтическое меню</a><a href="#works">Работы</a><a href="#presentation">Оформление</a><a href="#guarantees">Гарантии</a><a href="#price">Прайс</a><a class="nav-order" href="#order">Заказать</a>
         </nav>
       </div>
     </header>
@@ -181,6 +182,13 @@
           <div class="price-card payment-card"><p>На цену влияют объём стихотворения, срочность, выбранное оформление и дополнительные задачи. После согласования вы получите точную стоимость и выберете удобный способ оплаты.</p><div class="payment-methods"><article class="payment-method"><p class="payment-label">ЕРИП</p><h3>E-POS</h3><p>ЕРИП-сервис<br><strong>E-POS-41004-1-1</strong></p></article><article class="payment-method payment-method-qr"><img src="public/payment-qr.png" alt="QR-код для оплаты"><div><p class="payment-label">QR-код</p><p>В платежах банковского приложения выберите функцию «Сканировать QR» или «Оплата по QR», затем наведите камеру телефона на код.</p></div></article><article class="payment-method payment-method-bank"><p class="payment-label">Банковский перевод</p><div class="bank-details"><button type="button" class="payment-copy" data-copy="5536080012069153" aria-label="Скопировать номер карты Беларусбанка"><span>Беларусбанк</span><strong>5536 0800 1206 9153</strong><i>Скопировать</i></button><button type="button" class="payment-copy" data-copy="5326580002011531" aria-label="Скопировать номер карты Приорбанка"><span>Приорбанк</span><strong>5326 5800 0201 1531</strong><i>Скопировать</i></button><button type="button" class="payment-copy" data-copy="5208130000334676" aria-label="Скопировать номер карты АльфаБанка"><span>АльфаБанк</span><strong>5208 1300 0033 4676</strong><i>Скопировать</i></button></div></article></div><a class="button button-primary" href="#order">Оформить заказ <span>↗</span></a></div>
         </div>
       </section>
+      <section class="section presentation-section" id="presentation">
+        <div class="container">
+          <div class="presentation-heading"><div><p class="eyebrow">Оформление</p><h2>Слова, которые<br>хочется <em>дарить.</em></h2></div><p>Стихотворение может стать частью особенного подарка: в рамке, на открытке или в продуманной композиции. Листайте, чтобы увидеть примеры работ.</p></div>
+          <div class="presentation-gallery" id="presentation-gallery" aria-label="Галерея примеров оформления"></div>
+          <p class="presentation-note"><span aria-hidden="true">↔</span> Листайте галерею в сторону и нажмите на работу, чтобы рассмотреть её крупнее.</p>
+        </div>
+      </section>
       <section class="section order-section" id="order">
         <div class="container order-card">
           <div class="order-copy"><p class="eyebrow">Заказать</p><h2>Расскажите<br>немного <em>о важном.</em></h2><p>Заполните форму — Екатерина получит детали вашей истории и свяжется с вами для согласования.</p><a class="instagram-link" href="https://www.instagram.com/stihamiudivi/" target="_blank" rel="noreferrer"><span>◉</span> @stihamiudivi <b>↗</b></a></div>
@@ -190,14 +198,14 @@
     </main>
     <footer class="site-footer" id="contacts"><div class="container footer-inner"><a class="brand" href="#top"><span>Стихами</span><em>удиви</em><i>✦</i></a><p>Авторские стихи и подарки<br>по личным историям</p><a class="footer-instagram" href="https://www.instagram.com/stihamiudivi/" target="_blank" rel="noreferrer">Instagram ↗</a><small>© <span id="year"></span> Екатерина Саутина</small></div></footer>
     <nav class="mobile-quick-nav" id="mobile-quick-nav" aria-label="Быстрая навигация">
-      <a href="#poetic-menu">Услуги</a><a href="#works">Работы</a><a href="#formatting">Оформление</a><a href="#reviews">Отзывы</a><a href="#price">Прайс</a><a href="#order">Заказать</a>
+      <a href="#poetic-menu">Услуги</a><a href="#works">Работы</a><a href="#presentation">Оформление</a><a href="#reviews">Отзывы</a><a href="#price">Прайс</a><a href="#order">Заказать</a>
     </nav>
     <div class="mobile-dock" aria-label="Быстрые действия">
       <button class="mobile-quick-button" id="mobile-quick-button" type="button" aria-expanded="false" aria-controls="mobile-quick-nav"><span aria-hidden="true">☰</span> Меню</button>
       <a class="mobile-top-button" href="#top" aria-label="Вернуться в начало страницы"><span aria-hidden="true">↑</span> Наверх</a>
     </div>
     <dialog class="order-prompt" id="order-prompt" aria-labelledby="order-prompt-title"><button class="order-prompt-close" id="order-prompt-close" type="button" aria-label="Закрыть сообщение">×</button><p class="eyebrow">Идея для подарка</p><h2 id="order-prompt-title">Есть повод<br>для <em>особенных слов?</em></h2><p>Расскажите историю — Екатерина превратит её в личное стихотворение и подарок, который хочется хранить.</p><div><a class="button button-primary" id="order-prompt-order" href="#order">Оформить заказ <span>↗</span></a><button class="text-button" id="order-prompt-later" type="button">Пока не сейчас</button></div></dialog>
-    <dialog class="review-dialog" id="review-dialog" aria-label="Просмотр отзыва"><button class="review-dialog-close" type="button" aria-label="Закрыть отзыв">×</button><img id="review-dialog-image" src="" alt=""></dialog>
+    <dialog class="review-dialog" id="review-dialog" aria-label="Просмотр изображения"><button class="review-dialog-close" type="button" aria-label="Закрыть изображение">×</button><img id="review-dialog-image" src="" alt=""></dialog>
     <script src="public/site.js" defer></script>
   </body>
 </html>

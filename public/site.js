@@ -41,19 +41,34 @@ if (quickMenuButton && quickMenu) {
   });
 }
 
-const reviewTiles = Array.from(document.querySelectorAll(".review-tile"));
 const reviewDialog = document.querySelector("#review-dialog");
 const reviewDialogImage = document.querySelector("#review-dialog-image");
 const reviewDialogClose = document.querySelector(".review-dialog-close");
 
-reviewTiles.forEach((tile) => {
-  tile.hidden = false;
+function openGalleryItem(tile) {
+  if (!reviewDialog || !reviewDialogImage) return;
+  reviewDialogImage.src = tile.dataset.mediaSrc || tile.dataset.reviewSrc || "";
+  reviewDialogImage.alt = tile.dataset.mediaAlt || tile.dataset.reviewAlt || "Изображение";
+  reviewDialog.showModal();
+  reviewDialogClose?.focus();
+}
+
+const presentationGallery = document.querySelector("#presentation-gallery");
+
+if (presentationGallery) {
+  const items = Array.from({ length: 34 }, (_, index) => {
+    const number = String(index + 1).padStart(2, "0");
+    const label = `Пример оформления ${index + 1}`;
+    const src = `public/formatting/formatting-${number}.jpg`;
+    return `<button class="presentation-tile" type="button" data-media-src="${src}" data-media-alt="${label}" aria-label="Открыть ${label.toLowerCase()}"><img src="${src}" alt="${label}" loading="lazy"></button>`;
+  });
+  presentationGallery.innerHTML = items.join("");
+}
+
+document.querySelectorAll(".review-tile, .presentation-tile").forEach((tile) => {
+  if (tile.classList.contains("review-tile")) tile.hidden = false;
   tile.addEventListener("click", () => {
-    if (!reviewDialog || !reviewDialogImage) return;
-    reviewDialogImage.src = tile.dataset.reviewSrc || "";
-    reviewDialogImage.alt = tile.dataset.reviewAlt || "Отзыв клиента";
-    reviewDialog.showModal();
-    reviewDialogClose?.focus();
+    openGalleryItem(tile);
   });
 });
 
