@@ -256,7 +256,9 @@ function markPromptShown() {
 if (orderPrompt && !promptAlreadyShown()) {
   window.setTimeout(() => {
     if (orderPrompt.open) return;
-    orderPrompt.showModal();
+    // This is a gentle reminder, not a blocking dialog: a modal dialog prevents
+    // the whole document from responding to the mouse wheel on desktop.
+    orderPrompt.show();
     markPromptShown();
     orderPromptClose?.focus();
   }, 20000);
