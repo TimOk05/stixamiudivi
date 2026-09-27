@@ -5,3 +5,19 @@
 .order-prompt[open]{position:fixed;z-index:30;right:24px;bottom:24px;left:auto;margin:0}
 @media(max-width:760px){.order-prompt[open]{right:14px;bottom:14px;left:14px;width:auto}}
 @media(max-width:390px){.payment-method-qr{grid-template-columns:1fr}.payment-method-qr img{width:120px;height:120px}.payment-copy{grid-template-columns:1fr}.payment-copy i{grid-column:1;grid-row:auto;margin-top:3px}.order-prompt h2{font-size:39px}}
+
+/* A wider desktop canvas and a stable, readable Google Form column. */
+:root{--container:1520px}
+@media(min-width:761px){
+  .order-card{grid-template-columns:minmax(310px,.74fr) minmax(560px,1.26fr);gap:clamp(48px,5vw,94px);padding:70px clamp(38px,6vw,100px)}
+  .google-form-wrap{width:100%;min-width:0}
+  .google-form{min-width:560px;height:900px}
+}
+@media(min-width:761px) and (max-width:1180px){
+  .order-card{grid-template-columns:minmax(290px,.8fr) minmax(470px,1.2fr);gap:42px;padding:60px 6%}
+  .google-form{min-width:470px}
+}
+@media(min-width:761px) and (max-width:1000px){
+  .order-card{grid-template-columns:1fr}
+  .google-form{min-width:0}
+}
