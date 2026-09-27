@@ -68,9 +68,122 @@ if (presentationGallery) {
 document.querySelectorAll(".review-tile, .presentation-tile").forEach((tile) => {
   if (tile.classList.contains("review-tile")) tile.hidden = false;
   tile.addEventListener("click", () => {
+    if (tile.classList.contains("review-tile") && Date.now() < suppressReviewOpenUntil) return;
     openGalleryItem(tile);
   });
 });
+
+const reviewsGallery = document.querySelector("#reviews-gallery");
+const reviewsPrevious = document.querySelector("#reviews-prev");
+const reviewsNext = document.querySelector("#reviews-next");
+let suppressReviewOpenUntil = 0;
+
+function reviewScrollStep() {
+  if (!reviewsGallery) return 0;
+  return Math.max(reviewsGallery.clientWidth - 8, 260);
+}
+
+function updateReviewsControls() {
+  if (!reviewsGallery) return;
+  const maxScroll = reviewsGallery.scrollWidth - reviewsGallery.clientWidth;
+  if (reviewsPrevious) reviewsPrevious.disabled = reviewsGallery.scrollLeft <= 2;
+  if (reviewsNext) reviewsNext.disabled = reviewsGallery.scrollLeft >= maxScroll - 2;
+}
+
+reviewsPrevious?.addEventListener("click", () => {
+  reviewsGallery?.scrollBy({ left: -reviewScrollStep(), behavior: "smooth" });
+});
+
+reviewsNext?.addEventListener("click", () => {
+  reviewsGallery?.scrollBy({ left: reviewScrollStep(), behavior: "smooth" });
+});
+
+if (reviewsGallery) {
+  let pointerId = null;
+  let startX = 0;
+  let startScrollLeft = 0;
+  let dragged = false;
+
+  reviewsGallery.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "touch" || event.button !== 0) return;
+    pointerId = event.pointerId;
+    startX = event.clientX;
+    startScrollLeft = reviewsGallery.scrollLeft;
+    dragged = false;
+    reviewsGallery.setPointerCapture(pointerId);
+    reviewsGallery.classList.add("is-dragging");
+  });
+
+  reviewsGallery.addEventListener("pointermove", (event) => {
+    if (event.pointerId !== pointerId) return;
+    const distance = event.clientX - startX;
+    if (Math.abs(distance) > 4) dragged = true;
+    if (!dragged) return;
+    event.preventDefault();
+    reviewsGallery.scrollLeft = startScrollLeft - distance;
+  });
+
+  const finishReviewDrag = (event) => {
+    if (event.pointerId !== pointerId) return;
+    if (dragged) suppressReviewOpenUntil = Date.now() + 180;
+    if (reviewsGallery.hasPointerCapture(pointerId)) reviewsGallery.releasePointerCapture(pointerId);
+    pointerId = null;
+    reviewsGallery.classList.remove("is-dragging");
+  };
+
+  reviewsGallery.addEventListener("pointerup", finishReviewDrag);
+  reviewsGallery.addEventListener("pointercancel", finishReviewDrag);
+  reviewsGallery.addEventListener("scroll", updateReviewsControls, { passive: true });
+  window.addEventListener("resize", updateReviewsControls);
+  updateReviewsControls();
+}
+
+const motionTargets = Array.from(document.querySelectorAll("main > .section, .verse-section"));
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+const heroCaption = document.querySelector(".hero-caption");
+
+if (heroCaption && !reducedMotion.matches) {
+  const captionLines = ["Ваши чувства — в словах,", "которые хочется хранить."];
+  heroCaption.textContent = "";
+  heroCaption.classList.add("is-typing");
+  let lineIndex = 0;
+  let characterIndex = 0;
+
+  const typeCaption = () => {
+    const activeLine = captionLines[lineIndex];
+    if (characterIndex < activeLine.length) {
+      heroCaption.append(activeLine[characterIndex]);
+      characterIndex += 1;
+      window.setTimeout(typeCaption, 34);
+      return;
+    }
+    if (lineIndex < captionLines.length - 1) {
+      heroCaption.append(document.createElement("br"));
+      lineIndex += 1;
+      characterIndex = 0;
+      window.setTimeout(typeCaption, 160);
+      return;
+    }
+    window.setTimeout(() => heroCaption.classList.remove("is-typing"), 900);
+  };
+
+  window.setTimeout(typeCaption, 780);
+}
+
+if (reducedMotion.matches || !("IntersectionObserver" in window)) {
+  motionTargets.forEach((target) => target.classList.add("is-revealed"));
+} else {
+  motionTargets.forEach((target) => target.classList.add("motion-reveal"));
+  const motionObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-revealed");
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.12 });
+  motionTargets.forEach((target) => motionObserver.observe(target));
+}
 
 reviewDialogClose?.addEventListener("click", () => reviewDialog?.close());
 

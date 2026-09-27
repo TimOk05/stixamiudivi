@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="public/site-carousel.css">
     <link rel="stylesheet" href="public/site-commerce.css">
     <link rel="stylesheet" href="public/site-presentation.css">
+    <link rel="stylesheet" href="public/site-motion.css">
   </head>
   <body>
     <a class="skip-link" href="#content">Перейти к содержанию</a>
@@ -38,7 +39,7 @@
             <div class="hero-actions"><a class="button button-primary" href="#order">Заказать стихотворение <span>↗</span></a><a class="button button-secondary" href="#poetic-menu">Выбрать повод <span>↓</span></a></div>
             <p class="hero-note"><span>✦</span> Екатерина Саутина · автор проекта «Стихамиудиви»</p>
           </div>
-          <figure class="hero-portrait"><img src="public/works/ekaterina-writing.jpg" alt="Екатерина пишет стихотворение белым пером в парке"><figcaption>Ваши чувства — в словах,<br>которые хочется хранить.</figcaption></figure>
+          <figure class="hero-portrait"><img src="public/works/ekaterina-writing.jpg" alt="Екатерина пишет стихотворение белым пером в парке"><figcaption class="hero-caption">Ваши чувства — в словах,<br>которые хочется хранить.</figcaption></figure>
         </div>
       </section>
       <section class="verse-section">
@@ -122,7 +123,7 @@
       </section>
       <section class="section reviews-section" id="reviews">
         <div class="container">
-          <div class="reviews-heading"><p class="eyebrow">Отзывы</p><h2>Самые ценные слова<br>приходят <em>после вручения.</em></h2><p>Именно так звучат впечатления тех, чьи истории уже стали стихами и личными подарками. Нажмите на отзыв, чтобы рассмотреть его.</p></div>
+          <div class="reviews-heading"><div class="reviews-title"><p class="eyebrow">Отзывы</p><h2>Самые ценные слова<br>приходят <em>после вручения.</em></h2></div><p class="reviews-intro">Именно так звучат впечатления тех, чьи истории уже стали стихами и личными подарками. Нажмите на отзыв, чтобы рассмотреть его.</p></div>
           <div class="reviews-gallery" id="reviews-gallery" aria-label="Галерея отзывов клиентов">
             <button class="review-tile" type="button" data-review-src="public/reviews/review-01.jpg" data-review-alt="Отзыв клиента о стихотворении" aria-label="Открыть отзыв 1"><img src="public/reviews/review-01.jpg" alt="Отзыв клиента о стихотворении" loading="lazy"></button>
             <button class="review-tile" type="button" data-review-src="public/reviews/review-02.jpg" data-review-alt="Отзыв о поздравлении для бабушки" aria-label="Открыть отзыв 2"><img src="public/reviews/review-02.jpg" alt="Отзыв о поздравлении для бабушки" loading="lazy"></button>
@@ -174,6 +175,7 @@
             <button class="review-tile" type="button" data-review-src="public/reviews/review-48.jpg" data-review-alt="Отзыв о творческом подарке" aria-label="Открыть отзыв 48" hidden><img src="public/reviews/review-48.jpg" alt="Отзыв о творческом подарке" loading="lazy"></button>
             <button class="review-tile" type="button" data-review-src="public/reviews/review-49.jpg" data-review-alt="Отзыв о стихах, вызвавших фурор" aria-label="Открыть отзыв 49" hidden><img src="public/reviews/review-49.jpg" alt="Отзыв о стихах, вызвавших фурор" loading="lazy"></button>
           </div>
+          <div class="reviews-carousel-meta"><p><span aria-hidden="true">↔</span> Листайте в сторону или перетаскивайте фотографии мышью.</p><div class="reviews-controls"><button class="reviews-arrow" id="reviews-prev" type="button" aria-label="Показать предыдущие отзывы">←</button><button class="reviews-arrow" id="reviews-next" type="button" aria-label="Показать следующие отзывы">→</button></div></div>
         </div>
       </section>
       <section class="section price-section" id="price">
