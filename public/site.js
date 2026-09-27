@@ -17,29 +17,32 @@ if (menuButton && menu) {
   });
 }
 
-const quickMenuButton = document.querySelector("#mobile-quick-button");
-const quickMenu = document.querySelector("#mobile-quick-nav");
+const mobileHeader = document.querySelector(".site-header");
+const mobileViewport = window.matchMedia("(max-width: 760px)");
+let lastMobileScroll = window.scrollY;
 
-function closeQuickMenu() {
-  if (!quickMenuButton || !quickMenu) return;
-  quickMenu.classList.remove("is-open");
-  quickMenuButton.setAttribute("aria-expanded", "false");
+function updateMobileHeader() {
+  if (!mobileHeader) return;
+  if (!mobileViewport.matches) {
+    mobileHeader.classList.remove("is-mobile-header-visible", "has-scrolled");
+    return;
+  }
+
+  const currentScroll = window.scrollY;
+  const menuIsOpen = menu?.classList.contains("is-open");
+  const nearTop = currentScroll < 36;
+  const movingUp = currentScroll < lastMobileScroll - 4;
+  const movingDown = currentScroll > lastMobileScroll + 4;
+
+  if (nearTop || movingUp || menuIsOpen) mobileHeader.classList.add("is-mobile-header-visible");
+  if (movingDown && !menuIsOpen) mobileHeader.classList.remove("is-mobile-header-visible");
+  mobileHeader.classList.toggle("has-scrolled", currentScroll > 8);
+  lastMobileScroll = currentScroll;
 }
 
-if (quickMenuButton && quickMenu) {
-  quickMenuButton.addEventListener("click", () => {
-    const isOpen = quickMenu.classList.toggle("is-open");
-    quickMenuButton.setAttribute("aria-expanded", String(isOpen));
-  });
-
-  quickMenu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeQuickMenu);
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeQuickMenu();
-  });
-}
+window.addEventListener("scroll", updateMobileHeader, { passive: true });
+mobileViewport.addEventListener("change", updateMobileHeader);
+updateMobileHeader();
 
 const reviewDialog = document.querySelector("#review-dialog");
 const reviewDialogImage = document.querySelector("#review-dialog-image");

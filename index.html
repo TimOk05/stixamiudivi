@@ -17,10 +17,11 @@
     <link rel="stylesheet" href="public/site-commerce.css">
     <link rel="stylesheet" href="public/site-presentation.css">
     <link rel="stylesheet" href="public/site-motion.css">
+    <link rel="stylesheet" href="public/site-mobile.css">
   </head>
   <body>
     <a class="skip-link" href="#content">Перейти к содержанию</a>
-    <header class="site-header" id="top">
+    <header class="site-header is-mobile-header-visible" id="top">
       <div class="container header-inner">
         <a class="brand" href="#top" aria-label="Стихами удиви — на главную"><span>Стихами</span><em>удиви</em><i>✦</i></a>
         <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span></button>
@@ -194,18 +195,11 @@
       <section class="section order-section" id="order">
         <div class="container order-card">
           <div class="order-copy"><p class="eyebrow">Заказать</p><h2>Расскажите<br>немного <em>о важном.</em></h2><p>Заполните форму — Екатерина получит детали вашей истории и свяжется с вами для согласования.</p><a class="instagram-link" href="https://www.instagram.com/stihamiudivi/" target="_blank" rel="noreferrer"><span>◉</span> @stihamiudivi <b>↗</b></a></div>
-          <div class="google-form-wrap"><iframe class="google-form" title="Форма заказа стихотворения" src="https://docs.google.com/forms/d/e/1FAIpQLSd5Q1cBKyMXGBJsKid_pYdUMYpO2iREDCc5Us3qrAFSkTnWRg/viewform?embedded=true" loading="lazy">Загрузка…</iframe><p>Если форма не открылась, <a href="https://docs.google.com/forms/d/e/1FAIpQLSd5Q1cBKyMXGBJsKid_pYdUMYpO2iREDCc5Us3qrAFSkTnWRg/viewform" target="_blank" rel="noreferrer">откройте её в новом окне ↗</a></p></div>
+          <div class="google-form-wrap"><div class="mobile-order-form"><p>На телефоне форма откроется в новом окне — так она стабильно работает в любом браузере.</p><a class="button button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSd5Q1cBKyMXGBJsKid_pYdUMYpO2iREDCc5Us3qrAFSkTnWRg/viewform" target="_blank" rel="noreferrer">Открыть форму заказа <span>↗</span></a></div><iframe class="google-form" title="Форма заказа стихотворения" src="https://docs.google.com/forms/d/e/1FAIpQLSd5Q1cBKyMXGBJsKid_pYdUMYpO2iREDCc5Us3qrAFSkTnWRg/viewform?embedded=true" loading="lazy">Загрузка…</iframe><p>Если форма не открылась, <a href="https://docs.google.com/forms/d/e/1FAIpQLSd5Q1cBKyMXGBJsKid_pYdUMYpO2iREDCc5Us3qrAFSkTnWRg/viewform" target="_blank" rel="noreferrer">откройте её в новом окне ↗</a></p></div>
         </div>
       </section>
     </main>
     <footer class="site-footer" id="contacts"><div class="container footer-inner"><a class="brand" href="#top"><span>Стихами</span><em>удиви</em><i>✦</i></a><p>Авторские стихи и подарки<br>по личным историям</p><a class="footer-instagram" href="https://www.instagram.com/stihamiudivi/" target="_blank" rel="noreferrer">Instagram ↗</a><small>© <span id="year"></span> Екатерина Саутина</small></div></footer>
-    <nav class="mobile-quick-nav" id="mobile-quick-nav" aria-label="Быстрая навигация">
-      <a href="#poetic-menu">Услуги</a><a href="#works">Работы</a><a href="#presentation">Оформление</a><a href="#reviews">Отзывы</a><a href="#price">Прайс</a><a href="#order">Заказать</a>
-    </nav>
-    <div class="mobile-dock" aria-label="Быстрые действия">
-      <button class="mobile-quick-button" id="mobile-quick-button" type="button" aria-expanded="false" aria-controls="mobile-quick-nav"><span aria-hidden="true">☰</span> Меню</button>
-      <a class="mobile-top-button" href="#top" aria-label="Вернуться в начало страницы"><span aria-hidden="true">↑</span> Наверх</a>
-    </div>
     <dialog class="order-prompt" id="order-prompt" aria-labelledby="order-prompt-title"><button class="order-prompt-close" id="order-prompt-close" type="button" aria-label="Закрыть сообщение">×</button><p class="eyebrow">Идея для подарка</p><h2 id="order-prompt-title">Есть повод<br>для <em>особенных слов?</em></h2><p>Расскажите историю — Екатерина превратит её в личное стихотворение и подарок, который хочется хранить.</p><div><a class="button button-primary" id="order-prompt-order" href="#order">Оформить заказ <span>↗</span></a><button class="text-button" id="order-prompt-later" type="button">Пока не сейчас</button></div></dialog>
     <dialog class="review-dialog" id="review-dialog" aria-label="Просмотр изображения"><button class="review-dialog-close" type="button" aria-label="Закрыть изображение">×</button><img id="review-dialog-image" src="" alt=""></dialog>
     <script src="public/site.js" defer></script>
