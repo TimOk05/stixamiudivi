@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="public/site.css">
     <link rel="stylesheet" href="public/site-enhancements.css">
     <link rel="stylesheet" href="public/site-carousel.css">
+    <link rel="stylesheet" href="public/site-commerce.css">
   </head>
   <body>
     <a class="skip-link" href="#content">Перейти к содержанию</a>
@@ -177,21 +178,13 @@
       <section class="section price-section" id="price">
         <div class="container price-layout">
           <div><p class="eyebrow">Прайс и оплата</p><h2>Стоимость зависит<br>от <em>вашей истории.</em></h2></div>
-          <div class="price-card"><p>На цену влияют объём стихотворения, срочность, выбранное оформление и дополнительные задачи.</p><p>После согласования вы получите точную стоимость и сможете выбрать удобный способ оплаты:</p><ul><li>ЕРИП</li><li>QR-код</li><li>Банковский перевод</li></ul><a class="button button-primary" href="#order">Получить расчёт <span>↗</span></a></div>
+          <div class="price-card payment-card"><p>На цену влияют объём стихотворения, срочность, выбранное оформление и дополнительные задачи. После согласования вы получите точную стоимость и выберете удобный способ оплаты.</p><div class="payment-methods"><article class="payment-method"><p class="payment-label">ЕРИП</p><h3>E-POS</h3><p>ЕРИП-сервис<br><strong>E-POS-41004-1-1</strong></p></article><article class="payment-method payment-method-qr"><img src="public/payment-qr.png" alt="QR-код для оплаты"><div><p class="payment-label">QR-код</p><p>В платежах банковского приложения выберите функцию «Сканировать QR» или «Оплата по QR», затем наведите камеру телефона на код.</p></div></article><article class="payment-method payment-method-bank"><p class="payment-label">Банковский перевод</p><div class="bank-details"><button type="button" class="payment-copy" data-copy="5536080012069153" aria-label="Скопировать номер карты Беларусбанка"><span>Беларусбанк</span><strong>5536 0800 1206 9153</strong><i>Скопировать</i></button><button type="button" class="payment-copy" data-copy="5326580002011531" aria-label="Скопировать номер карты Приорбанка"><span>Приорбанк</span><strong>5326 5800 0201 1531</strong><i>Скопировать</i></button><button type="button" class="payment-copy" data-copy="5208130000334676" aria-label="Скопировать номер карты АльфаБанка"><span>АльфаБанк</span><strong>5208 1300 0033 4676</strong><i>Скопировать</i></button></div></article></div><a class="button button-primary" href="#order">Оформить заказ <span>↗</span></a></div>
         </div>
       </section>
       <section class="section order-section" id="order">
         <div class="container order-card">
-          <div class="order-copy"><p class="eyebrow">Заказать</p><h2>Расскажите<br>немного <em>о важном.</em></h2><p>Заполните форму — текст заявки появится у вас в буфере обмена. Останется отправить его Екатерине в Instagram.</p><a class="instagram-link" href="https://www.instagram.com/stihamiudivi/" target="_blank" rel="noreferrer"><span>◉</span> @stihamiudivi <b>↗</b></a></div>
-          <form class="order-form" id="order-form">
-            <label>Как к вам обращаться?<input name="name" required autocomplete="name" placeholder="Ваше имя"></label>
-            <label>Как с вами связаться?<input name="contact" required placeholder="Телефон, Telegram или другой удобный способ"></label>
-            <div class="form-row"><label>Выберите повод<select name="occasion" required><option value="" selected disabled>Выберите из списка</option><option>Адресные стихи</option><option>Свадебное поздравление</option><option>Лирика или история любви</option><option>Стихопортрет</option><option>Благодарственные стихи</option><option>Стихи в паре с подарком</option><option>Памятные стихи</option><option>Стихи на мероприятие</option><option>Стихи для бизнеса</option><option>Продолжение истории</option></select></label><label>Желаемая дата<input name="date" type="date"></label></div>
-            <label>Расскажите историю<textarea name="story" rows="4" required placeholder="Для кого подарок, что хочется сказать, памятные детали и пожелания к оформлению"></textarea></label>
-            <label>Какой вариант оплаты вам удобен?<select name="payment"><option>Обсудить после согласования</option><option>ЕРИП</option><option>QR-код</option><option>Банковский перевод</option></select></label>
-            <button class="button button-primary" type="submit">Подготовить заявку <span>↗</span></button><p class="form-hint">Реквизиты и QR-код Екатерина пришлёт после согласования заказа.</p>
-          </form>
-          <div class="form-success" id="form-success" hidden role="status"><span>✦</span><h3>Заявка скопирована</h3><p>Откройте Instagram, напишите Екатерине и вставьте текст в сообщение — так она сразу увидит все важные детали.</p><a class="button button-primary" href="https://www.instagram.com/stihamiudivi/" target="_blank" rel="noreferrer">Открыть Instagram <span>↗</span></a><button class="text-button" type="button" id="new-order">Заполнить новую заявку</button></div>
+          <div class="order-copy"><p class="eyebrow">Заказать</p><h2>Расскажите<br>немного <em>о важном.</em></h2><p>Заполните форму — Екатерина получит детали вашей истории и свяжется с вами для согласования.</p><a class="instagram-link" href="https://www.instagram.com/stihamiudivi/" target="_blank" rel="noreferrer"><span>◉</span> @stihamiudivi <b>↗</b></a></div>
+          <div class="google-form-wrap"><iframe class="google-form" title="Форма заказа стихотворения" src="https://docs.google.com/forms/d/e/1FAIpQLSd5Q1cBKyMXGBJsKid_pYdUMYpO2iREDCc5Us3qrAFSkTnWRg/viewform?embedded=true" loading="lazy">Загрузка…</iframe><p>Если форма не открылась, <a href="https://docs.google.com/forms/d/e/1FAIpQLSd5Q1cBKyMXGBJsKid_pYdUMYpO2iREDCc5Us3qrAFSkTnWRg/viewform" target="_blank" rel="noreferrer">откройте её в новом окне ↗</a></p></div>
         </div>
       </section>
     </main>
@@ -203,6 +196,7 @@
       <button class="mobile-quick-button" id="mobile-quick-button" type="button" aria-expanded="false" aria-controls="mobile-quick-nav"><span aria-hidden="true">☰</span> Меню</button>
       <a class="mobile-top-button" href="#top" aria-label="Вернуться в начало страницы"><span aria-hidden="true">↑</span> Наверх</a>
     </div>
+    <dialog class="order-prompt" id="order-prompt" aria-labelledby="order-prompt-title"><button class="order-prompt-close" id="order-prompt-close" type="button" aria-label="Закрыть сообщение">×</button><p class="eyebrow">Идея для подарка</p><h2 id="order-prompt-title">Есть повод<br>для <em>особенных слов?</em></h2><p>Расскажите историю — Екатерина превратит её в личное стихотворение и подарок, который хочется хранить.</p><div><a class="button button-primary" id="order-prompt-order" href="#order">Оформить заказ <span>↗</span></a><button class="text-button" id="order-prompt-later" type="button">Пока не сейчас</button></div></dialog>
     <dialog class="review-dialog" id="review-dialog" aria-label="Просмотр отзыва"><button class="review-dialog-close" type="button" aria-label="Закрыть отзыв">×</button><img id="review-dialog-image" src="" alt=""></dialog>
     <script src="public/site.js" defer></script>
   </body>

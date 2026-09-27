@@ -63,16 +63,7 @@ reviewDialog?.addEventListener("click", (event) => {
   if (event.target === reviewDialog) reviewDialog.close();
 });
 
-const orderForm = document.querySelector("#order-form");
-const successPanel = document.querySelector("#form-success");
-const newOrderButton = document.querySelector("#new-order");
-const dateInput = document.querySelector('input[name="date"]');
-
-if (dateInput) {
-  dateInput.min = new Date().toISOString().split("T")[0];
-}
-
-async function copyOrder(text) {
+async function copyText(text) {
   if (navigator.clipboard?.writeText) {
     await navigator.clipboard.writeText(text);
     return;
@@ -89,40 +80,60 @@ async function copyOrder(text) {
   fallback.remove();
 }
 
-if (orderForm && successPanel) {
-  orderForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const data = new FormData(orderForm);
-    const request = [
-      "Здравствуйте, Екатерина! Хочу заказать стихотворение.",
-      "",
-      "Имя: " + data.get("name"),
-      "Контакт: " + data.get("contact"),
-      "Повод: " + data.get("occasion"),
-      "Желаемая дата: " + (data.get("date") || "не указана"),
-      "Удобный способ оплаты: " + data.get("payment"),
-      "",
-      "Моя история:",
-      String(data.get("story")).trim(),
-    ].join("\n");
-
+document.querySelectorAll(".payment-copy").forEach((button) => {
+  button.addEventListener("click", async () => {
     try {
-      await copyOrder(request);
-      orderForm.hidden = true;
-      successPanel.hidden = false;
-      successPanel.querySelector("a")?.focus();
+      await copyText(button.dataset.copy || "");
+      const hint = button.querySelector("i");
+      if (!hint) return;
+      const initialText = hint.textContent;
+      hint.textContent = "Скопировано";
+      window.setTimeout(() => {
+        hint.textContent = initialText;
+      }, 1800);
     } catch {
-      window.alert("Не удалось скопировать заявку автоматически. Пожалуйста, напишите Екатерине в Instagram.");
+      window.alert("Не удалось скопировать номер автоматически. Пожалуйста, скопируйте его вручную.");
     }
   });
+});
+
+const orderPrompt = document.querySelector("#order-prompt");
+const orderPromptClose = document.querySelector("#order-prompt-close");
+const orderPromptLater = document.querySelector("#order-prompt-later");
+const orderPromptOrder = document.querySelector("#order-prompt-order");
+
+function closeOrderPrompt() {
+  if (orderPrompt?.open) orderPrompt.close();
 }
 
-newOrderButton?.addEventListener("click", () => {
-  successPanel.hidden = true;
-  orderForm.hidden = false;
-  orderForm.reset();
-  orderForm.querySelector("input")?.focus();
-});
+function promptAlreadyShown() {
+  try {
+    return sessionStorage.getItem("stihamiudivi-order-prompt") === "shown";
+  } catch {
+    return false;
+  }
+}
+
+function markPromptShown() {
+  try {
+    sessionStorage.setItem("stihamiudivi-order-prompt", "shown");
+  } catch {
+    // The prompt still works if browser storage is unavailable.
+  }
+}
+
+if (orderPrompt && !promptAlreadyShown()) {
+  window.setTimeout(() => {
+    if (orderPrompt.open) return;
+    orderPrompt.showModal();
+    markPromptShown();
+    orderPromptClose?.focus();
+  }, 20000);
+}
+
+orderPromptClose?.addEventListener("click", closeOrderPrompt);
+orderPromptLater?.addEventListener("click", closeOrderPrompt);
+orderPromptOrder?.addEventListener("click", closeOrderPrompt);
 
 const year = document.querySelector("#year");
 if (year) year.textContent = new Date().getFullYear();
