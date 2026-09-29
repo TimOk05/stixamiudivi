@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="public/site-presentation.css">
     <link rel="stylesheet" href="public/site-motion.css">
     <link rel="stylesheet" href="public/site-mobile.css">
+    <link rel="stylesheet" href="public/site-poetic-menu.css">
   </head>
   <body>
     <a class="skip-link" href="#content">Перейти к содержанию</a>
@@ -60,18 +61,23 @@
       </section>
       <section class="section menu-section" id="poetic-menu">
         <div class="container">
-          <div class="section-heading"><div><p class="eyebrow">Поэтическое меню</p><h2>Для каждого повода<br>есть <em>свои слова.</em></h2></div><p>Выберите близкую историю — а я помогу найти форму, интонацию и детали, которые сделают подарок личным.</p></div>
-          <p class="menu-instruction"><span aria-hidden="true">↓</span> Нажмите на карточку — внутри варианты и подробности <span aria-hidden="true">↓</span></p>
+          <div class="section-heading"><div><p class="eyebrow">Поэтическое меню (здесь можно заказать)</p><h2>Для каждого повода<br>есть <em>свои слова.</em></h2></div><p>Выберите близкую историю — а я помогу найти форму, интонацию и детали, которые сделают подарок личным.</p></div>
+          <p class="menu-instruction"><span aria-hidden="true">↓</span> Откройте список, чтобы увидеть все варианты стихов <span aria-hidden="true">↓</span></p>
           <div class="poetic-menu">
-            <details class="menu-card" open><summary><span class="menu-index">01</span><h3>Адресные стихи</h3><span class="menu-action"><b aria-hidden="true">⌄</b></span></summary><ul><li>День рождения и юбилей</li><li>Рождение малыша и крестины</li><li>Профессиональный праздник</li><li>Новый год, 8 Марта и другие даты</li><li>Выпускной</li></ul></details>
-            <details class="menu-card"><summary><span class="menu-index">02</span><h3>Свадебные поздравления</h3><span class="menu-action"><b aria-hidden="true">⌄</b></span></summary><ul><li>Поздравление молодожёнов</li><li>Клятвы невесты и жениха</li><li>История любви в стихах</li><li>Слова благодарности родителям и гостям</li></ul></details>
-            <details class="menu-card"><summary><span class="menu-index">03</span><h3>Лирика и история любви</h3><span class="menu-action"><b aria-hidden="true">⌄</b></span></summary><ul><li>Чувства и эмоции в стихах</li><li>Биография человека или семьи</li><li>Признание в любви с важными датами, фактами и фразами</li></ul></details>
-            <details class="menu-card"><summary><span class="menu-index">04</span><h3>Стихопортрет</h3><span class="menu-action"><b aria-hidden="true">⌄</b></span></summary><p>Изображение человека в стихах: его характер, внешность, увлечения и лучшие качества.</p></details>
-            <details class="menu-card"><summary><span class="menu-index">05</span><h3>Благодарственные стихи</h3><span class="menu-action"><b aria-hidden="true">⌄</b></span></summary><p>Тёплые слова для тех, кому важно сказать искреннее «спасибо».</p></details>
-            <details class="menu-card"><summary><span class="menu-index">06</span><h3>Стихи в паре с подарком</h3><span class="menu-action"><b aria-hidden="true">⌄</b></span></summary><p>Тематическое стихотворение, которое делает момент вручения подарка ещё более личным.</p></details>
-            <details class="menu-card"><summary><span class="menu-index">07</span><h3>Памятные стихи</h3><span class="menu-action"><b aria-hidden="true">⌄</b></span></summary><p>Строки, выражающие дань памяти, любви и уважения.</p></details>
-            <details class="menu-card"><summary><span class="menu-index">08</span><h3>Стихи на мероприятия</h3><span class="menu-action"><b aria-hidden="true">⌄</b></span></summary><p>Для конкурсов, сувениров, сценариев и важных событий.</p></details>
-            <details class="menu-card"><summary><span class="menu-index">09</span><h3>Стихи для бизнеса</h3><span class="menu-action"><b aria-hidden="true">⌄</b></span></summary><p>Бизнес-визитки, тематические тексты и особенные поздравления для коллег и клиентов.</p></details>
+            <details class="poetic-menu-list">
+              <summary><span>Все виды стихов</span><span class="poetic-menu-action"><small>Нажмите, чтобы открыть</small><b aria-hidden="true">⌄</b></span></summary>
+              <ol class="poetic-menu-items">
+                <li><h3>Адресные стихи</h3><ul><li>День рождения и юбилей</li><li>Рождение малыша и крестины</li><li>Профессиональный праздник</li><li>Новый год, 8 Марта и другие даты</li><li>Выпускной</li></ul></li>
+                <li><h3>Свадебные поздравления</h3><ul><li>Поздравление молодожёнов</li><li>Клятвы невесты и жениха</li><li>История любви в стихах</li><li>Слова благодарности родителям и гостям</li></ul></li>
+                <li><h3>Лирика и история любви</h3><ul><li>Чувства и эмоции в стихах</li><li>Биография человека или семьи</li><li>Признание в любви с важными датами, фактами и фразами</li></ul></li>
+                <li><h3>Стихопортрет</h3><p>Изображение человека в стихах: его характер, внешность, увлечения и лучшие качества.</p></li>
+                <li><h3>Благодарственные стихи</h3><p>Тёплые слова для тех, кому важно сказать искреннее «спасибо».</p></li>
+                <li><h3>Стихи в паре с подарком</h3><p>Тематическое стихотворение, которое делает момент вручения подарка ещё более личным.</p></li>
+                <li><h3>Памятные стихи</h3><p>Строки, выражающие дань памяти, любви и уважения.</p></li>
+                <li><h3>Стихи на мероприятия</h3><p>Для конкурсов, сувениров, сценариев и важных событий.</p></li>
+                <li><h3>Стихи для бизнеса</h3><p>Бизнес-визитки, тематические тексты и особенные поздравления для коллег и клиентов.</p></li>
+              </ol>
+            </details>
           </div>
         </div>
       </section>

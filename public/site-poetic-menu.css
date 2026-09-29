@@ -1,0 +1,28 @@
+.poetic-menu{display:block;border:0}
+.poetic-menu-list{border:1px solid var(--line);background:#fffdf9}
+.poetic-menu-list summary{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 30px;cursor:pointer;list-style:none;color:#4d2a41;font:clamp(27px,2.5vw,38px)/1 Georgia,serif;letter-spacing:-.045em}
+.poetic-menu-list summary::-webkit-details-marker{display:none}
+.poetic-menu-list[open]{background:#f8eef1}
+.poetic-menu-action{display:flex;align-items:center;gap:9px;color:var(--wine);font:11px/1.1 Arial,sans-serif;letter-spacing:.04em;text-align:right;text-transform:uppercase}
+.poetic-menu-action b{display:grid;place-items:center;width:29px;height:29px;border:1px solid rgba(88,42,75,.32);border-radius:50%;font:24px/.75 Arial,sans-serif;transition:transform .2s ease}
+.poetic-menu-list[open] .poetic-menu-action b{transform:rotate(180deg)}
+.poetic-menu-items{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:0;padding:0;list-style:none;border-top:1px solid var(--line);counter-reset:poetic-types}
+.poetic-menu-items>li{position:relative;min-height:210px;padding:26px 25px 25px 58px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);counter-increment:poetic-types}
+.poetic-menu-items>li:nth-child(3n){border-right:0}
+.poetic-menu-items>li:nth-last-child(-n+3){border-bottom:0}
+.poetic-menu-items>li::before{position:absolute;top:28px;left:25px;color:#a96c94;content:counter(poetic-types,decimal-leading-zero);font:14px/1 Georgia,serif}
+.poetic-menu-items h3{margin:0 0 13px;color:#4d2a41;font-size:25px;line-height:1.05}
+.poetic-menu-items p,.poetic-menu-items ul{margin:0;padding:0;color:#6b5b56;font-size:13px;line-height:1.6}
+.poetic-menu-items ul{padding-left:16px}
+.poetic-menu-items li li{margin:4px 0}
+
+@media(max-width:760px){
+  .poetic-menu-list summary{align-items:flex-start;padding:21px 18px;font-size:29px}
+  .poetic-menu-action{max-width:124px;font-size:9px}
+  .poetic-menu-action b{flex:0 0 25px;width:25px;height:25px;font-size:21px}
+  .poetic-menu-items{grid-template-columns:1fr}
+  .poetic-menu-items>li,.poetic-menu-items>li:nth-child(3n){min-height:0;padding:23px 19px 22px 54px;border-right:0;border-bottom:1px solid var(--line)}
+  .poetic-menu-items>li:last-child{border-bottom:0}
+  .poetic-menu-items>li::before{top:25px;left:20px}
+  .poetic-menu-items h3{font-size:24px}
+}
