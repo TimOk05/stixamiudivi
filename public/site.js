@@ -160,6 +160,106 @@ if (reviewsGallery) {
   updateReviewsControls();
 }
 
+const worksGallery = document.querySelector("#works-gallery");
+const worksPrevious = document.querySelector("#works-prev");
+const worksNext = document.querySelector("#works-next");
+const worksDialog = document.querySelector("#works-dialog");
+const worksDialogImage = document.querySelector("#works-dialog-image");
+const worksDialogClose = document.querySelector(".works-dialog-close");
+let suppressWorkOpenUntil = 0;
+
+function worksScrollStep() {
+  if (!worksGallery) return 0;
+  return Math.max(worksGallery.clientWidth - 8, 260);
+}
+
+function updateWorksControls() {
+  if (!worksGallery) return;
+  const maxScroll = worksGallery.scrollWidth - worksGallery.clientWidth;
+  if (worksPrevious) worksPrevious.disabled = worksGallery.scrollLeft <= 2;
+  if (worksNext) worksNext.disabled = worksGallery.scrollLeft >= maxScroll - 2;
+}
+
+function openWork(tile) {
+  if (!worksDialog || !worksDialogImage) return;
+  worksDialogImage.src = tile.dataset.workSrc || "";
+  worksDialogImage.alt = tile.dataset.workAlt || "Работа Екатерины Саутиной";
+  worksDialog.showModal();
+  worksDialogClose?.focus();
+}
+
+worksPrevious?.addEventListener("click", () => {
+  worksGallery?.scrollBy({ left: -worksScrollStep(), behavior: "smooth" });
+});
+
+worksNext?.addEventListener("click", () => {
+  worksGallery?.scrollBy({ left: worksScrollStep(), behavior: "smooth" });
+});
+
+if (worksGallery) {
+  let pointerId = null;
+  let startX = 0;
+  let startY = 0;
+  let startScrollLeft = 0;
+  let dragged = false;
+  let dragAxis = null;
+
+  worksGallery.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0) return;
+    pointerId = event.pointerId;
+    startX = event.clientX;
+    startY = event.clientY;
+    startScrollLeft = worksGallery.scrollLeft;
+    dragged = false;
+    dragAxis = null;
+    worksGallery.setPointerCapture(pointerId);
+  });
+
+  worksGallery.addEventListener("pointermove", (event) => {
+    if (event.pointerId !== pointerId) return;
+    const distanceX = event.clientX - startX;
+    const distanceY = event.clientY - startY;
+
+    if (!dragAxis) {
+      if (Math.max(Math.abs(distanceX), Math.abs(distanceY)) < 8) return;
+      dragAxis = Math.abs(distanceX) > Math.abs(distanceY) ? "horizontal" : "vertical";
+
+      if (dragAxis === "vertical") {
+        if (worksGallery.hasPointerCapture(pointerId)) worksGallery.releasePointerCapture(pointerId);
+        pointerId = null;
+        return;
+      }
+
+      worksGallery.classList.add("is-dragging");
+    }
+
+    if (dragAxis !== "horizontal") return;
+    dragged = true;
+    event.preventDefault();
+    worksGallery.scrollLeft = startScrollLeft - distanceX;
+  });
+
+  const finishWorkDrag = (event) => {
+    if (event.pointerId !== pointerId) return;
+    if (dragged) suppressWorkOpenUntil = Date.now() + 180;
+    if (worksGallery.hasPointerCapture(pointerId)) worksGallery.releasePointerCapture(pointerId);
+    pointerId = null;
+    dragAxis = null;
+    worksGallery.classList.remove("is-dragging");
+  };
+
+  worksGallery.addEventListener("pointerup", finishWorkDrag);
+  worksGallery.addEventListener("pointercancel", finishWorkDrag);
+  worksGallery.addEventListener("click", (event) => {
+    if (Date.now() < suppressWorkOpenUntil) return;
+    const tile = event.target.closest(".works-gallery-tile");
+    if (tile) openWork(tile);
+  });
+  worksGallery.addEventListener("scroll", updateWorksControls, { passive: true });
+  window.addEventListener("resize", updateWorksControls);
+  updateWorksControls();
+}
+
 const motionTargets = Array.from(document.querySelectorAll("main > .section, .verse-section"));
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -211,6 +311,12 @@ reviewDialogClose?.addEventListener("click", () => reviewDialog?.close());
 
 reviewDialog?.addEventListener("click", (event) => {
   if (event.target === reviewDialog) reviewDialog.close();
+});
+
+worksDialogClose?.addEventListener("click", () => worksDialog?.close());
+
+worksDialog?.addEventListener("click", (event) => {
+  if (event.target === worksDialog) worksDialog.close();
 });
 
 async function copyText(text) {
