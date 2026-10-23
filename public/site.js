@@ -68,10 +68,10 @@ if (presentationGallery) {
   presentationGallery.innerHTML = items.join("");
 }
 
-document.querySelectorAll(".review-tile, .presentation-tile").forEach((tile) => {
-  if (tile.classList.contains("review-tile")) tile.hidden = false;
+document.querySelectorAll(".review-tile").forEach((tile) => {
+  tile.hidden = false;
   tile.addEventListener("click", () => {
-    if (tile.classList.contains("review-tile") && Date.now() < suppressReviewOpenUntil) return;
+    if (Date.now() < suppressReviewOpenUntil) return;
     openGalleryItem(tile);
   });
 });
@@ -165,7 +165,17 @@ const worksPrevious = document.querySelector("#works-prev");
 const worksNext = document.querySelector("#works-next");
 const worksDialog = document.querySelector("#works-dialog");
 const worksDialogImage = document.querySelector("#works-dialog-image");
+const worksDialogZoomTarget = document.querySelector("#works-dialog-zoom-target");
 const worksDialogClose = document.querySelector(".works-dialog-close");
+const worksDialogCaption = document.querySelector("#works-dialog-caption");
+const worksDialogViewport = document.querySelector("#works-dialog-viewport");
+const worksZoomIn = document.querySelector("#works-zoom-in");
+const worksZoomOut = document.querySelector("#works-zoom-out");
+const worksZoomReset = document.querySelector("#works-zoom-reset");
+let workZoom = 1;
+let workMaxZoom = 1;
+let workBaseWidth = 0;
+let workBaseHeight = 0;
 let suppressWorkOpenUntil = 0;
 
 function worksScrollStep() {
@@ -180,13 +190,90 @@ function updateWorksControls() {
   if (worksNext) worksNext.disabled = worksGallery.scrollLeft >= maxScroll - 2;
 }
 
+function setWorkZoom(zoom) {
+  if (!worksDialogImage || !worksDialogViewport) return;
+  const viewportRect = worksDialogViewport.getBoundingClientRect();
+  const imageRect = worksDialogImage.getBoundingClientRect();
+  const centerX = imageRect.width ? (viewportRect.left + worksDialogViewport.clientWidth / 2 - imageRect.left) / imageRect.width : 0.5;
+  const centerY = imageRect.height ? (viewportRect.top + worksDialogViewport.clientHeight / 2 - imageRect.top) / imageRect.height : 0.5;
+  workZoom = Math.min(workMaxZoom, Math.max(1, zoom));
+  const width = workBaseWidth * workZoom;
+  const height = workBaseHeight * workZoom;
+  worksDialogImage.style.width = `${width}px`;
+  worksDialogImage.style.height = `${height}px`;
+  const resizedRect = worksDialogImage.getBoundingClientRect();
+  worksDialogViewport.scrollLeft += resizedRect.left - viewportRect.left + centerX * width - worksDialogViewport.clientWidth / 2;
+  worksDialogViewport.scrollTop += resizedRect.top - viewportRect.top + centerY * height - worksDialogViewport.clientHeight / 2;
+  if (worksZoomIn) worksZoomIn.disabled = workZoom >= workMaxZoom - 0.001;
+  if (worksZoomOut) worksZoomOut.disabled = workZoom <= 1;
+  if (worksZoomReset) {
+    worksZoomReset.textContent = `${Math.round(workZoom * 100)}%`;
+    worksZoomReset.disabled = workZoom <= 1;
+  }
+  if (worksDialogZoomTarget) {
+    worksDialogZoomTarget.disabled = workMaxZoom <= 1;
+    worksDialogZoomTarget.setAttribute("aria-pressed", String(workZoom > 1));
+    worksDialogZoomTarget.setAttribute("aria-label", workZoom > 1 ? "Вернуть исходный масштаб" : "Увеличить изображение");
+  }
+}
+
+function fitWorkImage() {
+  if (!worksDialog?.open || !worksDialogViewport || !worksDialogImage?.naturalWidth || !worksDialogImage.complete) return;
+  const { naturalWidth, naturalHeight } = worksDialogImage;
+  const availableWidth = Math.max(1, worksDialogViewport.clientWidth - 32);
+  const availableHeight = Math.max(1, worksDialogViewport.clientHeight - 32);
+  const fit = Math.min(1, availableWidth / naturalWidth, availableHeight / naturalHeight);
+  workBaseWidth = naturalWidth * fit;
+  workBaseHeight = naturalHeight * fit;
+  // Keep zoom modest and never stretch a photo past its original resolution.
+  workMaxZoom = Math.min(1.5, 1 / fit);
+  setWorkZoom(workZoom);
+  worksDialogImage.style.visibility = "visible";
+}
+
 function openWork(tile) {
-  if (!worksDialog || !worksDialogImage) return;
-  worksDialogImage.src = tile.dataset.workSrc || "";
-  worksDialogImage.alt = tile.dataset.workAlt || "Работа Екатерины Саутиной";
+  if (!worksDialog || worksDialog.open || !worksDialogImage || !worksDialogViewport) return;
+  workZoom = 1;
+  workMaxZoom = 1;
+  workBaseWidth = 0;
+  workBaseHeight = 0;
+  worksDialogImage.style.visibility = "hidden";
+  setWorkZoom(1);
+  worksDialogImage.alt = tile.dataset.workAlt || tile.dataset.mediaAlt || "Работа Екатерины Саутиной";
+  if (worksDialogCaption) {
+    worksDialogCaption.textContent = tile.dataset.work
+      ? `Работа ${tile.dataset.work} · стр. ${tile.dataset.page}`
+      : tile.dataset.workAlt || tile.dataset.mediaAlt || "Просмотр работы";
+  }
+  worksDialogImage.src = tile.dataset.workSrc || tile.dataset.mediaSrc || "";
   worksDialog.showModal();
+  document.documentElement.classList.add("work-viewer-open");
+  worksDialogViewport.scrollTo(0, 0);
+  fitWorkImage();
   worksDialogClose?.focus();
 }
+
+worksDialogImage?.addEventListener("load", fitWorkImage);
+window.addEventListener("resize", fitWorkImage);
+worksZoomIn?.addEventListener("click", () => setWorkZoom(workZoom + 0.25));
+worksZoomOut?.addEventListener("click", () => setWorkZoom(workZoom - 0.25));
+worksZoomReset?.addEventListener("click", () => setWorkZoom(1));
+worksDialogZoomTarget?.addEventListener("click", () => {
+  setWorkZoom(workZoom > 1 ? 1 : workMaxZoom);
+});
+worksDialog?.addEventListener("close", () => {
+  document.documentElement.classList.remove("work-viewer-open");
+});
+document.addEventListener("keydown", (event) => {
+  if (!worksDialog?.open || event.ctrlKey || event.metaKey || event.altKey) return;
+  if (["+", "=", "-", "0"].includes(event.key)) {
+    event.preventDefault();
+    setWorkZoom(event.key === "0" ? 1 : workZoom + (["+", "="].includes(event.key) ? 0.25 : -0.25));
+  }
+});
+document.querySelectorAll(".work-image-button, .presentation-tile").forEach((tile) => {
+  tile.addEventListener("click", () => openWork(tile));
+});
 
 worksPrevious?.addEventListener("click", () => {
   worksGallery?.scrollBy({ left: -worksScrollStep(), behavior: "smooth" });
@@ -205,14 +292,15 @@ if (worksGallery) {
   let dragAxis = null;
 
   worksGallery.addEventListener("pointerdown", (event) => {
-    if (event.button !== 0) return;
+    // Touch scrolling and taps are handled by the browser. Only mouse dragging
+    // needs pointer capture; intercepting touch events can swallow image taps.
+    if (event.pointerType !== "mouse" || event.button !== 0) return;
     pointerId = event.pointerId;
     startX = event.clientX;
     startY = event.clientY;
     startScrollLeft = worksGallery.scrollLeft;
     dragged = false;
     dragAxis = null;
-    worksGallery.setPointerCapture(pointerId);
   });
 
   worksGallery.addEventListener("pointermove", (event) => {
@@ -231,6 +319,7 @@ if (worksGallery) {
       }
 
       worksGallery.classList.add("is-dragging");
+      worksGallery.setPointerCapture(pointerId);
     }
 
     if (dragAxis !== "horizontal") return;
