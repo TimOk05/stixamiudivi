@@ -271,7 +271,7 @@ document.addEventListener("keydown", (event) => {
     setWorkZoom(event.key === "0" ? 1 : workZoom + (["+", "="].includes(event.key) ? 0.25 : -0.25));
   }
 });
-document.querySelectorAll(".work-image-button, .presentation-tile").forEach((tile) => {
+document.querySelectorAll(".work-image-button").forEach((tile) => {
   tile.addEventListener("click", () => openWork(tile));
 });
 
@@ -347,6 +347,153 @@ if (worksGallery) {
   worksGallery.addEventListener("scroll", updateWorksControls, { passive: true });
   window.addEventListener("resize", updateWorksControls);
   updateWorksControls();
+}
+
+const presentationPrevious = document.querySelector("#presentation-prev");
+const presentationNext = document.querySelector("#presentation-next");
+
+if (presentationGallery) {
+  const presentationShell = presentationGallery.closest(".presentation-gallery-shell");
+  const presentationReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let pointerId = null;
+  let startX = 0;
+  let startY = 0;
+  let startScrollLeft = 0;
+  let dragged = false;
+  let dragAxis = null;
+  let suppressPresentationOpenUntil = 0;
+  let pauseUntil = 0;
+  let pointerInside = false;
+  let focusInside = false;
+
+  function presentationItemStep() {
+    const tile = presentationGallery.querySelector(".presentation-tile");
+    if (!tile) return Math.max(presentationGallery.clientWidth * 0.7, 260);
+    const styles = window.getComputedStyle(presentationGallery);
+    return tile.getBoundingClientRect().width + (Number.parseFloat(styles.columnGap) || 0);
+  }
+
+  function presentationPageStep() {
+    return Math.max(presentationGallery.clientWidth - presentationItemStep(), presentationItemStep());
+  }
+
+  function scrollPresentation(direction, pageStep = true) {
+    const maxScroll = presentationGallery.scrollWidth - presentationGallery.clientWidth;
+    const atStart = presentationGallery.scrollLeft <= 2;
+    const atEnd = presentationGallery.scrollLeft >= maxScroll - 2;
+
+    if (direction < 0 && atStart) {
+      presentationGallery.scrollTo({ left: maxScroll, behavior: "smooth" });
+    } else if (direction > 0 && atEnd) {
+      presentationGallery.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      presentationGallery.scrollBy({
+        left: direction * (pageStep ? presentationPageStep() : presentationItemStep()),
+        behavior: "smooth",
+      });
+    }
+  }
+
+  function pauseAfterInteraction() {
+    pauseUntil = Date.now() + 8000;
+  }
+
+  presentationPrevious?.addEventListener("click", () => {
+    pauseAfterInteraction();
+    scrollPresentation(-1);
+  });
+
+  presentationNext?.addEventListener("click", () => {
+    pauseAfterInteraction();
+    scrollPresentation(1);
+  });
+
+  presentationGallery.addEventListener("keydown", (event) => {
+    if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+    event.preventDefault();
+    pauseAfterInteraction();
+    scrollPresentation(event.key === "ArrowLeft" ? -1 : 1);
+  });
+
+  presentationGallery.addEventListener("pointerdown", (event) => {
+    if (event.pointerType !== "mouse" || event.button !== 0) return;
+    pointerId = event.pointerId;
+    startX = event.clientX;
+    startY = event.clientY;
+    startScrollLeft = presentationGallery.scrollLeft;
+    dragged = false;
+    dragAxis = null;
+    pauseAfterInteraction();
+  });
+
+  presentationGallery.addEventListener("pointermove", (event) => {
+    if (event.pointerId !== pointerId) return;
+    const distanceX = event.clientX - startX;
+    const distanceY = event.clientY - startY;
+
+    if (!dragAxis) {
+      if (Math.max(Math.abs(distanceX), Math.abs(distanceY)) < 7) return;
+      dragAxis = Math.abs(distanceX) > Math.abs(distanceY) ? "horizontal" : "vertical";
+      if (dragAxis === "vertical") {
+        pointerId = null;
+        return;
+      }
+      presentationGallery.classList.add("is-dragging");
+      presentationGallery.setPointerCapture(pointerId);
+    }
+
+    if (dragAxis !== "horizontal") return;
+    dragged = true;
+    event.preventDefault();
+    presentationGallery.scrollLeft = startScrollLeft - distanceX;
+  });
+
+  const finishPresentationDrag = (event) => {
+    if (event.pointerId !== pointerId) return;
+    if (dragged) suppressPresentationOpenUntil = Date.now() + 250;
+    if (presentationGallery.hasPointerCapture(pointerId)) presentationGallery.releasePointerCapture(pointerId);
+    pointerId = null;
+    dragAxis = null;
+    presentationGallery.classList.remove("is-dragging");
+    pauseAfterInteraction();
+  };
+
+  presentationGallery.addEventListener("pointerup", finishPresentationDrag);
+  presentationGallery.addEventListener("pointercancel", finishPresentationDrag);
+  presentationGallery.addEventListener("dragstart", (event) => event.preventDefault());
+  presentationGallery.addEventListener("click", (event) => {
+    if (Date.now() < suppressPresentationOpenUntil) {
+      event.preventDefault();
+      return;
+    }
+    const tile = event.target.closest(".presentation-tile");
+    if (tile) openWork(tile);
+  });
+
+  presentationShell?.addEventListener("mouseenter", () => {
+    pointerInside = true;
+  });
+  presentationShell?.addEventListener("mouseleave", () => {
+    pointerInside = false;
+  });
+  presentationShell?.addEventListener("focusin", () => {
+    focusInside = true;
+  });
+  presentationShell?.addEventListener("focusout", (event) => {
+    focusInside = presentationShell.contains(event.relatedTarget);
+  });
+
+  window.setInterval(() => {
+    if (
+      presentationReducedMotion.matches ||
+      document.hidden ||
+      pointerInside ||
+      focusInside ||
+      worksDialog?.open ||
+      Date.now() < pauseUntil
+    ) return;
+    scrollPresentation(1, false);
+  }, 4500);
 }
 
 const motionTargets = Array.from(document.querySelectorAll("main > .section, .verse-section"));
