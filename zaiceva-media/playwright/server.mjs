@@ -4,7 +4,7 @@ import { extname, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(fileURLToPath(new URL("../", import.meta.url)));
-const port = 4177;
+const port = 4178;
 const contentTypes = {
   ".html": "text/html; charset=utf-8",
   ".png": "image/png",

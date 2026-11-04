@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import AxeBuilder from "@axe-core/playwright";
 
 const viewports = [
   { name: "mobile", width: 390, height: 844 },
@@ -17,7 +18,7 @@ for (const viewport of viewports) {
     });
     page.on("pageerror", (error) => pageErrors.push(error.message));
     page.on("requestfailed", (request) => {
-      if (request.url().startsWith("http://127.0.0.1:4177")) failedLocalRequests.push(request.url());
+      if (request.url().startsWith("http://127.0.0.1:4178")) failedLocalRequests.push(request.url());
     });
 
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
@@ -47,6 +48,14 @@ for (const viewport of viewports) {
     expect(failedLocalRequests).toEqual([]);
   });
 }
+
+test("accessibility: no serious or critical violations", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto("/", { waitUntil: "networkidle" });
+  const results = await new AxeBuilder({ page }).analyze();
+  const blocking = results.violations.filter((violation) => ["serious", "critical"].includes(violation.impact));
+  expect(blocking, JSON.stringify(blocking, null, 2)).toEqual([]);
+});
 
 test("mobile menu opens, navigates and closes with Escape", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });

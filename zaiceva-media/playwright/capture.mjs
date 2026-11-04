@@ -12,7 +12,7 @@ for (const viewport of [
   { name: "1440", width: 1440, height: 1000 },
 ]) {
   const page = await browser.newPage({ viewport: { width: viewport.width, height: viewport.height }, reducedMotion: "reduce" });
-  await page.goto("http://127.0.0.1:4177/", { waitUntil: "networkidle" });
+  await page.goto("http://127.0.0.1:4178/", { waitUntil: "networkidle" });
   await page.evaluate(() => document.fonts.ready);
   await page.screenshot({ path: resolve(outputDir, `zaiceva-${viewport.name}.png`), fullPage: true });
   await page.close();
