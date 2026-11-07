@@ -21,3 +21,4 @@
   .order-card{grid-template-columns:1fr}
   .google-form{min-width:0}
 }
+.google-form-wrap a.button-primary{color:#fff;border-bottom:0}
