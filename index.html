@@ -28,7 +28,14 @@
         <a class="brand" href="#top" aria-label="Стихами удиви — на главную"><span>Стихами</span><em>удиви</em><i>✦</i></a>
         <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span></button>
         <nav class="main-nav" aria-label="Основная навигация">
-          <a href="#poetic-menu">Поэтическое меню</a><a href="#works">Работы</a><a href="#presentation">Оформление</a><a href="#guarantees">Гарантии</a><a href="#price">Прайс</a><a class="nav-order" href="#order">Заказать</a>
+          <a href="#poetic-menu">Поэтическое меню</a>
+          <a href="#works">Работы</a>
+          <a href="#presentation">Оформление</a>
+          <a href="#art-hearts">Арт-сердца</a>
+          <a href="#guarantees">Гарантии</a>
+          <a href="#price">Прайс</a>
+          <a href="#contacts">Контакты</a>
+          <a class="nav-order" href="#order">Заказать</a>
         </nav>
       </div>
     </header>
@@ -155,7 +162,13 @@
           <div class="formatting-copy"><p class="eyebrow">Оформление</p><h2>Стихотворение<br>можно <em>увидеть.</em></h2><p>Строки могут остаться нежным письмом или стать частью интерьера и самого подарка. Подберём оформление, которое продолжит вашу историю.</p><a class="button button-primary" href="#order">Обсудить оформление <span>↗</span></a></div>
           <div class="format-grid">
             <article><span class="format-number">01</span><h3>Стих в рамке</h3><p>Готовая композиция для дома, рабочего пространства или особенного вручения.</p></article>
-            <article class="heart-card"><span class="format-number">02</span><div class="art-heart" aria-hidden="true">♥</div><h3>Арт-сердце</h3><p>Самостоятельный подарок с личной историей или выразительное оформление стихотворения.</p></article>
+            <article class="heart-card">
+              <span class="format-number">02</span>
+              <div class="art-heart" aria-hidden="true">♥</div>
+              <h3>Арт-сердце</h3>
+              <p>Самостоятельный подарок с личной историей или выразительное оформление стихотворения.</p>
+              <a class="art-heart-link" href="#art-hearts">Смотреть арт-сердца</a>
+            </article>
             <article><span class="format-number">03</span><h3>Подарочная подача</h3><p>Бережные детали, с которыми стихотворение становится событием.</p></article>
           </div>
         </div>
@@ -167,6 +180,92 @@
             <button class="presentation-arrow presentation-arrow--next" id="presentation-next" type="button" aria-label="Следующие примеры оформления">→</button>
           </div>
           <p class="presentation-note"><span aria-hidden="true">↔</span> Используйте стрелки, перетаскивайте ленту или нажмите на работу, чтобы рассмотреть её крупнее.</p>
+        </div>
+      </section>
+      <section class="section art-heart-section" id="art-hearts" aria-labelledby="art-hearts-heading">
+        <div class="container">
+          <div class="art-heart-feature">
+            <div class="art-heart-copy">
+              <h2 id="art-hearts-heading">Арт-сердца</h2>
+              <p>Арт-сердце размером <strong>33&nbsp;×&nbsp;28&nbsp;×&nbsp;5&nbsp;см</strong> можно подарить отдельно или использовать:</p>
+              <ul>
+                <li>для красивой подачи стихов и других подарков</li>
+                <li>как подсвечник</li>
+                <li>для ювелирных украшений, парфюма и косметики</li>
+                <li>как украшение интерьера</li>
+              </ul>
+              <a class="button button-primary" href="#price-art-heart">Смотреть цену</a>
+            </div>
+            <video class="art-heart-feature-video" autoplay muted loop controls playsinline width="720" height="900"
+              aria-label="Арт-сердце с горящими свечами" poster="public/art-hearts/video-candlelight.jpg" src="public/art-hearts/video-candlelight.mp4"></video>
+          </div>
+
+          <div class="art-heart-gallery" data-art-heart-gallery>
+            <div class="art-heart-gallery-header">
+              <h3 id="art-heart-photos-heading">Фотографии</h3>
+              <div class="art-heart-gallery-controls">
+                <button type="button" data-scroll="-1" aria-controls="art-heart-photos" aria-label="Предыдущие фотографии" disabled>Назад</button>
+                <button type="button" data-scroll="1" aria-controls="art-heart-photos" aria-label="Следующие фотографии">Вперёд</button>
+              </div>
+            </div>
+            <div class="art-heart-media-strip" id="art-heart-photos" tabindex="0" role="region" aria-labelledby="art-heart-photos-heading">
+              <button class="art-heart-photo" type="button" data-media-src="public/price/art-heart.jpg" data-media-alt="Арт-сердце с открыткой и свечами">
+                <img src="public/price/art-heart.jpg" alt="Арт-сердце с открыткой и свечами" width="1080" height="1080" loading="lazy" decoding="async">
+              </button>
+              <button class="art-heart-photo" type="button" data-media-src="public/art-hearts/sea-shells.jpg" data-media-alt="Бирюзовое арт-сердце с ракушками и свечами">
+                <img src="public/art-hearts/sea-shells.jpg" alt="Бирюзовое арт-сердце с ракушками и свечами" width="1200" height="1183" loading="lazy" decoding="async">
+              </button>
+              <button class="art-heart-photo" type="button" data-media-src="public/art-hearts/red-petals.jpg" data-media-alt="Арт-сердце из бордовых лепестков с открыткой">
+                <img src="public/art-hearts/red-petals.jpg" alt="Арт-сердце из бордовых лепестков с открыткой" width="1080" height="1080" loading="lazy" decoding="async">
+              </button>
+              <button class="art-heart-photo" type="button" data-media-src="public/art-hearts/pink-perfume.jpg" data-media-alt="Розовое арт-сердце с флаконом парфюма">
+                <img src="public/art-hearts/pink-perfume.jpg" alt="Розовое арт-сердце с флаконом парфюма" width="1024" height="1280" loading="lazy" decoding="async">
+              </button>
+              <button class="art-heart-photo" type="button" data-media-src="public/art-hearts/blue-jewelry.jpg" data-media-alt="Синее арт-сердце с украшением в футляре">
+                <img src="public/art-hearts/blue-jewelry.jpg" alt="Синее арт-сердце с украшением в футляре" width="1024" height="1280" loading="lazy" decoding="async">
+              </button>
+              <button class="art-heart-photo" type="button" data-media-src="public/art-hearts/white-feathers.jpg" data-media-alt="Арт-сердце из белых перьев с открыткой">
+                <img src="public/art-hearts/white-feathers.jpg" alt="Арт-сердце из белых перьев с открыткой" width="1080" height="1080" loading="lazy" decoding="async">
+              </button>
+              <button class="art-heart-photo" type="button" data-media-src="public/art-hearts/bronze-sweets.jpg" data-media-alt="Бирюзовое арт-сердце с конфетами и конвертом">
+                <img src="public/art-hearts/bronze-sweets.jpg" alt="Бирюзовое арт-сердце с конфетами и конвертом" width="1080" height="1080" loading="lazy" decoding="async">
+              </button>
+              <button class="art-heart-photo" type="button" data-media-src="public/art-hearts/blue-feathers.jpg" data-media-alt="Арт-сердце из синих перьев с украшениями">
+                <img src="public/art-hearts/blue-feathers.jpg" alt="Арт-сердце из синих перьев с украшениями" width="1080" height="1080" loading="lazy" decoding="async">
+              </button>
+              <button class="art-heart-photo" type="button" data-media-src="public/art-hearts/cosmetics.jpg" data-media-alt="Розовое и мятное арт-сердца с косметикой">
+                <img src="public/art-hearts/cosmetics.jpg" alt="Розовое и мятное арт-сердца с косметикой" width="1024" height="1280" loading="lazy" decoding="async">
+              </button>
+              <button class="art-heart-photo" type="button" data-media-src="public/art-hearts/purple-decor.jpg" data-media-alt="Фиолетовое арт-сердце со свечами и фигуркой">
+                <img src="public/art-hearts/purple-decor.jpg" alt="Фиолетовое арт-сердце со свечами и фигуркой" width="1080" height="1080" loading="lazy" decoding="async">
+              </button>
+              <button class="art-heart-photo" type="button" data-media-src="public/art-hearts/shells-poem.jpg" data-media-alt="Арт-сердце с ракушками и стихотворением">
+                <img src="public/art-hearts/shells-poem.jpg" alt="Арт-сердце с ракушками и стихотворением" width="1080" height="1080" loading="lazy" decoding="async">
+              </button>
+              <button class="art-heart-photo" type="button" data-media-src="public/art-hearts/rose-card.jpg" data-media-alt="Арт-сердце в зелёных тонах с открыткой с розой">
+                <img src="public/art-hearts/rose-card.jpg" alt="Арт-сердце в зелёных тонах с открыткой с розой" width="1080" height="1080" loading="lazy" decoding="async">
+              </button>
+            </div>
+          </div>
+
+          <div class="art-heart-gallery" data-art-heart-gallery>
+            <div class="art-heart-gallery-header">
+              <h3 id="art-heart-videos-heading">Другие видео</h3>
+              <div class="art-heart-gallery-controls">
+                <button type="button" data-scroll="-1" aria-controls="art-heart-videos" aria-label="Предыдущие видео" disabled>Назад</button>
+                <button type="button" data-scroll="1" aria-controls="art-heart-videos" aria-label="Следующие видео">Вперёд</button>
+              </div>
+            </div>
+            <div class="art-heart-media-strip" id="art-heart-videos" tabindex="0" role="region" aria-labelledby="art-heart-videos-heading">
+              <video controls playsinline preload="none" width="720" height="900" aria-label="Арт-сердце из пастельных перьев с открыткой" poster="public/art-hearts/video-pastel-feathers.jpg" src="public/art-hearts/video-pastel-feathers.mp4"></video>
+              <video controls playsinline preload="none" width="720" height="900" aria-label="Бирюзовое арт-сердце с флаконом парфюма" poster="public/art-hearts/video-turquoise-perfume.jpg" src="public/art-hearts/video-turquoise-perfume.mp4"></video>
+              <video controls playsinline preload="none" width="720" height="900" aria-label="Розовое арт-сердце с золотистым флаконом" poster="public/art-hearts/video-pink-perfume.jpg" src="public/art-hearts/video-pink-perfume.mp4"></video>
+              <video controls playsinline preload="none" width="720" height="900" aria-label="Арт-сердце с весенней открыткой" poster="public/art-hearts/video-spring-gift.jpg" src="public/art-hearts/video-spring-gift.mp4"></video>
+              <video controls playsinline preload="none" width="720" height="900" aria-label="Арт-сердце с красными свечами и открыткой" poster="public/art-hearts/video-red-candles.jpg" src="public/art-hearts/video-red-candles.mp4"></video>
+              <video controls playsinline preload="none" width="720" height="900" aria-label="Бирюзовое арт-сердце с ракушками, свечами и флаконом" poster="public/art-hearts/video-sea-shells.jpg" src="public/art-hearts/video-sea-shells.mp4"></video>
+              <video controls playsinline preload="none" width="720" height="900" aria-label="Арт-сердце с пасхальным декором" poster="public/art-hearts/video-easter-decor.jpg" src="public/art-hearts/video-easter-decor.mp4"></video>
+            </div>
+          </div>
         </div>
       </section>
       <section class="section story-section" id="stories">
@@ -253,10 +352,60 @@
           <div class="reviews-carousel-meta"><p><span aria-hidden="true">↔</span> Листайте в сторону или перетаскивайте фотографии мышью.</p><div class="reviews-controls"><button class="reviews-arrow" id="reviews-prev" type="button" aria-label="Показать предыдущие отзывы">←</button><button class="reviews-arrow" id="reviews-next" type="button" aria-label="Показать следующие отзывы">→</button></div></div>
         </div>
       </section>
-      <section class="section price-section" id="price">
-        <div class="container price-layout">
-          <div><p class="eyebrow">Прайс и оплата</p><h2>Стоимость зависит<br>от <em>вашей истории.</em></h2></div>
-          <div class="price-card payment-card"><p>На цену влияют объём стихотворения, срочность, выбранное оформление и дополнительные задачи. После согласования вы получите точную стоимость и выберете удобный способ оплаты.</p><div class="payment-methods"><article class="payment-method"><p class="payment-label">ЕРИП</p><h3>E-POS</h3><p>ЕРИП-сервис<br><strong>E-POS-41004-1-1</strong></p></article><article class="payment-method payment-method-qr"><img src="public/payment-qr.png" alt="QR-код для оплаты"><div><p class="payment-label">QR-код</p><p>В платежах банковского приложения выберите функцию «Сканировать QR» или «Оплата по QR», затем наведите камеру телефона на код.</p></div></article><article class="payment-method payment-method-bank"><p class="payment-label">Банковский перевод</p><div class="bank-details"><button type="button" class="payment-copy" data-copy="5536080012069153" aria-label="Скопировать номер карты Беларусбанка"><span>Беларусбанк</span><strong>5536 0800 1206 9153</strong><i>Скопировать</i></button><button type="button" class="payment-copy" data-copy="5326580002011531" aria-label="Скопировать номер карты Приорбанка"><span>Приорбанк</span><strong>5326 5800 0201 1531</strong><i>Скопировать</i></button><button type="button" class="payment-copy" data-copy="5208130000334676" aria-label="Скопировать номер карты АльфаБанка"><span>АльфаБанк</span><strong>5208 1300 0033 4676</strong><i>Скопировать</i></button></div></article></div><a class="button button-primary" href="#order">Оформить заказ <span>↗</span></a></div>
+      <section class="section price-section" id="price" aria-labelledby="price-heading">
+        <div class="container">
+          <h2 id="price-heading">Прайс</h2>
+          <div class="price-options">
+            <article class="price-option">
+              <img src="public/price/calligraphy.jpg" alt="Стихотворение, оформленное каллиграфией на листе А4" width="1280" height="853" loading="lazy" decoding="async">
+              <div class="price-option-body">
+                <h3>Каллиграфия</h3>
+                <p>Стихи или поздравление, 8–12 четверостиший.<br>Формат А4, отправка на e-mail.</p>
+                <p class="price-option-amount"><strong>199</strong> белорусских рублей</p>
+              </div>
+            </article>
+            <article class="price-option">
+              <img src="public/price/framed-text.jpg" alt="Стихотворение в светлой рамке" width="1098" height="1280" loading="lazy" decoding="async">
+              <div class="price-option-body">
+                <h3>Текст в рамке</h3>
+                <p>Стихи или поздравление, 8–12 четверостиший.<br>Текст в рамке А4 под стеклом.</p>
+                <p class="price-option-amount"><strong>299</strong> белорусских рублей</p>
+              </div>
+            </article>
+            <article class="price-option">
+              <img src="public/price/framed-photo.jpg" alt="Поздравление с фотографией в белой рамке" width="1280" height="1170" loading="lazy" decoding="async">
+              <div class="price-option-body">
+                <h3>Фото в рамке</h3>
+                <p>Стихи или поздравление, 8–12 четверостиший.<br>Фото в рамке А4 под стеклом.</p>
+                <p class="price-option-amount"><strong>399</strong> белорусских рублей</p>
+              </div>
+            </article>
+            <article class="price-option" id="price-art-heart">
+              <img src="public/price/art-heart.jpg" alt="Арт-сердце со свечами и открыткой" width="1080" height="1080" loading="lazy" decoding="async">
+              <div class="price-option-body">
+                <h3>Арт-сердце</h3>
+                <p>Размер 33&nbsp;×&nbsp;28&nbsp;×&nbsp;5&nbsp;см.</p>
+                <p class="price-option-amount"><strong>499</strong> белорусских рублей</p>
+              </div>
+            </article>
+          </div>
+          <div class="price-summary">
+            <p>Иное оформление согласовывается и оплачивается дополнительно.</p>
+            <a class="button button-primary" href="#order">Оформить заказ</a>
+          </div>
+          <div class="price-layout price-payments">
+            <div>
+              <h3 class="price-payments-heading">Способы оплаты</h3>
+              <p>Способ оплаты можно выбрать после согласования заказа.</p>
+            </div>
+            <div class="price-card payment-card">
+              <div class="payment-methods">
+                <article class="payment-method"><p class="payment-label">ЕРИП</p><h3>E-POS</h3><p>ЕРИП-сервис<br><strong>E-POS-41004-1-1</strong></p></article>
+                <article class="payment-method payment-method-qr"><img src="public/payment-qr.png" alt="QR-код для оплаты"><div><p class="payment-label">QR-код</p><p>В платежах банковского приложения выберите функцию «Сканировать QR» или «Оплата по QR», затем наведите камеру телефона на код.</p></div></article>
+                <article class="payment-method payment-method-bank"><p class="payment-label">Банковский перевод</p><div class="bank-details"><button type="button" class="payment-copy" data-copy="5536080012069153" aria-label="Скопировать номер карты Беларусбанка"><span>Беларусбанк</span><strong>5536 0800 1206 9153</strong><i>Скопировать</i></button><button type="button" class="payment-copy" data-copy="5326580002011531" aria-label="Скопировать номер карты Приорбанка"><span>Приорбанк</span><strong>5326 5800 0201 1531</strong><i>Скопировать</i></button><button type="button" class="payment-copy" data-copy="5208130000334676" aria-label="Скопировать номер карты АльфаБанка"><span>АльфаБанк</span><strong>5208 1300 0033 4676</strong><i>Скопировать</i></button></div></article>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <section class="section order-section" id="order">
@@ -265,8 +414,17 @@
           <div class="google-form-wrap"><div class="mobile-order-form"><p>На телефоне форма откроется в новом окне — так она стабильно работает в любом браузере.</p><a class="button button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSd5Q1cBKyMXGBJsKid_pYdUMYpO2iREDCc5Us3qrAFSkTnWRg/viewform" target="_blank" rel="noreferrer">Заполнить форму <span aria-hidden="true">↗</span></a></div><iframe class="google-form" title="Форма заказа стихотворения" src="https://docs.google.com/forms/d/e/1FAIpQLSd5Q1cBKyMXGBJsKid_pYdUMYpO2iREDCc5Us3qrAFSkTnWRg/viewform?embedded=true" loading="lazy">Загрузка…</iframe><p>Если форма не открылась, <a href="https://docs.google.com/forms/d/e/1FAIpQLSd5Q1cBKyMXGBJsKid_pYdUMYpO2iREDCc5Us3qrAFSkTnWRg/viewform" target="_blank" rel="noreferrer">откройте её в новом окне ↗</a></p></div>
         </div>
       </section>
+      <section class="section contact-section" id="contacts" aria-labelledby="contacts-heading">
+        <div class="container contact-inner">
+          <div>
+            <h2 id="contacts-heading">Контакты</h2>
+            <p>Екатерина Саутина</p>
+          </div>
+          <a class="button button-secondary" href="https://www.instagram.com/stihamiudivi/" target="_blank" rel="noreferrer">Instagram · @stihamiudivi</a>
+        </div>
+      </section>
     </main>
-    <footer class="site-footer" id="contacts"><div class="container footer-inner"><a class="brand" href="#top"><span>Стихами</span><em>удиви</em><i>✦</i></a><p>Авторские стихи и подарки<br>по личным историям</p><a class="footer-instagram" href="https://www.instagram.com/stihamiudivi/" target="_blank" rel="noreferrer">Instagram ↗</a><small>© <span id="year"></span> Екатерина Саутина</small></div></footer>
+    <footer class="site-footer"><div class="container footer-inner"><a class="brand" href="#top"><span>Стихами</span><em>удиви</em><i>✦</i></a><p>Авторские стихи и подарки<br>по личным историям</p><small>© <span id="year"></span> Екатерина Саутина</small></div></footer>
     <dialog class="order-prompt" id="order-prompt" aria-labelledby="order-prompt-title"><button class="order-prompt-close" id="order-prompt-close" type="button" aria-label="Закрыть сообщение">×</button><p class="eyebrow">Идея для подарка</p><h2 id="order-prompt-title">Есть повод<br>для <em>особенных слов?</em></h2><p>Расскажите историю — Екатерина превратит её в личное стихотворение и подарок, который хочется хранить.</p><div><a class="button button-primary" id="order-prompt-order" href="#order">Оформить заказ <span>↗</span></a><button class="text-button" id="order-prompt-later" type="button">Пока не сейчас</button></div></dialog>
     <dialog class="review-dialog" id="review-dialog" aria-label="Просмотр изображения"><button class="review-dialog-close" type="button" aria-label="Закрыть изображение">×</button><img id="review-dialog-image" src="" alt=""></dialog>
     <dialog class="works-dialog" id="works-dialog" aria-labelledby="works-dialog-caption">

@@ -22,3 +22,129 @@
   .google-form{min-width:0}
 }
 .google-form-wrap a.button-primary{color:#fff;border-bottom:0}
+
+.price-options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: clamp(22px, 4vw, 38px);
+}
+
+.price-option {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(88, 42, 75, .2);
+  background: #fffdf9;
+}
+
+.price-option > img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.price-option:nth-child(1) > img {
+  object-position: 32% center;
+}
+
+.price-option:nth-child(2) > img {
+  object-position: center 38%;
+}
+
+.price-option:nth-child(3) > img {
+  object-position: right center;
+}
+
+.price-option-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: clamp(16px, 2vw, 24px);
+}
+
+.price-option-body h3,
+.price-payments-heading {
+  margin: 0 0 12px;
+  color: var(--wine);
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.05;
+}
+
+.price-option-body p,
+.price-summary p,
+.price-payments p,
+.contact-inner p {
+  color: var(--muted);
+}
+
+.price-option-amount {
+  margin: auto 0 0;
+  padding-top: 13px;
+  border-top: 1px solid var(--line);
+  line-height: 1.2;
+}
+
+.price-option-amount strong {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--wine);
+  font: 400 clamp(30px, 3vw, 42px)/1 Georgia, serif;
+}
+
+.price-summary,
+.contact-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 24px;
+}
+
+.price-summary {
+  margin-top: 23px;
+}
+
+.price-summary p {
+  margin: 0;
+}
+
+.price-payments {
+  align-items: start;
+  margin-top: clamp(32px, 5vw, 62px);
+  padding-top: clamp(25px, 4vw, 42px);
+  border-top: 1px solid var(--line);
+}
+
+.price-payments .payment-methods {
+  margin: 0;
+}
+
+.contact-section {
+  padding-block: 0 clamp(34px, 6vw, 72px);
+}
+
+.contact-inner {
+  padding-block: clamp(22px, 3vw, 36px);
+  border-block: 1px solid var(--line);
+}
+
+.contact-inner p {
+  margin: 10px 0 0;
+}
+
+@media (max-width: 960px) {
+  .price-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .price-options {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .price-payments {
+    gap: 12px;
+  }
+}

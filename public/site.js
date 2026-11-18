@@ -253,6 +253,28 @@ function openWork(tile) {
   worksDialogClose?.focus();
 }
 
+document.querySelectorAll("[data-art-heart-gallery]").forEach((gallery) => {
+  const strip = gallery.querySelector(".art-heart-media-strip");
+  const previous = gallery.querySelector('[data-scroll="-1"]');
+  const next = gallery.querySelector('[data-scroll="1"]');
+  if (!strip || !previous || !next) return;
+
+  const updateControls = () => {
+    previous.disabled = strip.scrollLeft <= 2;
+    next.disabled = strip.scrollLeft >= strip.scrollWidth - strip.clientWidth - 2;
+  };
+
+  previous.addEventListener("click", () => strip.scrollBy({ left: -strip.clientWidth }));
+  next.addEventListener("click", () => strip.scrollBy({ left: strip.clientWidth }));
+  strip.addEventListener("scroll", updateControls, { passive: true });
+  window.addEventListener("resize", updateControls);
+  strip.addEventListener("click", (event) => {
+    const photo = event.target.closest(".art-heart-photo");
+    if (photo) openWork(photo);
+  });
+  updateControls();
+});
+
 worksDialogImage?.addEventListener("load", fitWorkImage);
 window.addEventListener("resize", fitWorkImage);
 worksZoomIn?.addEventListener("click", () => setWorkZoom(workZoom + 0.25));
