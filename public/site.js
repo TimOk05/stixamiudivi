@@ -577,7 +577,7 @@ worksDialog?.addEventListener("click", (event) => {
   if (event.target === worksDialog) worksDialog.close();
 });
 
-async function copyText(text) {
+async function copyText(text, container = document.body) {
   if (navigator.clipboard?.writeText) {
     await navigator.clipboard.writeText(text);
     return;
@@ -588,10 +588,13 @@ async function copyText(text) {
   fallback.setAttribute("readonly", "");
   fallback.style.position = "fixed";
   fallback.style.opacity = "0";
-  document.body.append(fallback);
-  fallback.select();
-  document.execCommand("copy");
-  fallback.remove();
+  container.append(fallback);
+  try {
+    fallback.select();
+    if (!document.execCommand("copy")) throw new Error("Copy failed.");
+  } finally {
+    fallback.remove();
+  }
 }
 
 document.querySelectorAll(".payment-copy").forEach((button) => {
@@ -613,28 +616,44 @@ document.querySelectorAll(".payment-copy").forEach((button) => {
 
 const callbackTrigger = document.querySelector("#callback-trigger");
 const callbackDialog = document.querySelector("#callback-dialog");
-const callbackForm = document.querySelector("#callback-form");
 const callbackPhone = document.querySelector("#callback-phone");
 
-if (callbackTrigger && callbackDialog?.showModal && callbackForm && callbackPhone) {
-  callbackTrigger.hidden = false;
-  callbackTrigger.addEventListener("click", () => callbackDialog.showModal());
-  document.querySelector("#callback-close")?.addEventListener("click", () => callbackDialog.close());
-  callbackPhone.addEventListener("input", () => callbackPhone.setCustomValidity(""));
+if (callbackTrigger && callbackDialog?.showModal && callbackPhone) {
+  const draftLinks = callbackDialog.querySelectorAll("[data-callback-draft]");
+  const phoneHint = callbackDialog.querySelector("#callback-phone-hint");
+  const copyStatus = callbackDialog.querySelector("#callback-copy-status");
+  const greeting = "Здравствуйте! Перезвоните мне, пожалуйста";
+  let callbackMessage = `${greeting}.`;
 
-  callbackForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+  function updateCallbackLinks() {
     const phone = callbackPhone.value.replace(/[\s().-]/g, "");
-    if (!/^\+?\d{7,15}$/.test(phone)) {
-      callbackPhone.setCustomValidity("Введите номер телефона из 7–15 цифр.");
-      callbackPhone.reportValidity();
-      return;
-    }
+    const hasPhone = /^\+?\d{7,15}$/.test(phone);
+    phoneHint.hidden = !callbackPhone.value.trim() || hasPhone;
+    copyStatus.value = "";
+    callbackMessage = hasPhone ? `${greeting}, мой номер ${phone}.` : `${greeting}.`;
 
-    const contact = document.getElementById(event.submitter?.value || "contact-whatsapp");
-    const destination = new URL(contact.href);
-    destination.searchParams.set("text", `Здравствуйте! Перезвоните мне, пожалуйста, по номеру ${phone}.`);
-    window.location.assign(destination.href);
+    draftLinks.forEach((link) => {
+      const destination = new URL(link.href);
+      destination.searchParams.set("text", callbackMessage);
+      link.href = destination.href;
+    });
+  }
+
+  callbackTrigger.hidden = false;
+  callbackTrigger.addEventListener("click", () => {
+    updateCallbackLinks();
+    callbackDialog.showModal();
+  });
+  callbackDialog.querySelector("#callback-close").addEventListener("click", () => callbackDialog.close());
+  callbackPhone.addEventListener("input", updateCallbackLinks);
+  callbackDialog.querySelector("#callback-copy").addEventListener("click", async () => {
+    const message = callbackMessage;
+    try {
+      await copyText(message, callbackDialog);
+      copyStatus.value = "Сообщение скопировано.";
+    } catch {
+      copyStatus.value = `Скопируйте сообщение вручную. ${message}`;
+    }
   });
 }
 

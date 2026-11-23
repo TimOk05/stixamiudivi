@@ -143,7 +143,7 @@
 }
 
 .contact-actions,
-.callback-form {
+.callback-content {
   display: grid;
   gap: 10px;
 }
@@ -203,7 +203,7 @@
   font-size: 24px;
 }
 
-.callback-form input {
+.callback-content input {
   width: 100%;
   min-height: 44px;
   padding: 8px 12px;
@@ -213,8 +213,22 @@
   color: var(--ink);
 }
 
-.callback-form .contact-buttons {
+.callback-content .contact-buttons {
   margin-top: 4px;
+}
+
+.callback-copy-button {
+  min-height: 44px;
+  margin-top: 0;
+  padding: 6px 0;
+  border-bottom: 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.callback-feedback {
+  color: var(--muted);
+  font-size: 14px;
 }
 
 @media (max-width: 460px) {
@@ -223,8 +237,12 @@
   }
 
   .contact-actions .contact-buttons:first-child > .button,
-  .callback-form .contact-buttons > .button {
+  .callback-content .contact-buttons > .button {
     flex: 1 1 auto;
+  }
+
+  .callback-content .contact-buttons > .button {
+    padding-inline: 10px;
   }
 }
 

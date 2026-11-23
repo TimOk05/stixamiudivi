@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="public/site.css">
     <link rel="stylesheet" href="public/site-enhancements.css">
     <link rel="stylesheet" href="public/site-carousel.css">
-    <link rel="stylesheet" href="public/site-commerce.css">
+    <link rel="stylesheet" href="public/site-commerce.css?v=callback-links">
     <link rel="stylesheet" href="public/site-presentation.css">
     <link rel="stylesheet" href="public/site-motion.css">
     <link rel="stylesheet" href="public/site-mobile.css">
@@ -428,8 +428,8 @@
             </div>
             <div class="contact-buttons" role="group" aria-label="Мессенджеры">
               <a class="button button-secondary" href="viber://chat?number=%2B375445534241">Viber</a>
-              <a class="button button-secondary" id="contact-telegram" href="https://t.me/+375445534241">Telegram</a>
-              <a class="button button-secondary" id="contact-whatsapp" href="https://wa.me/375445534241">WhatsApp</a>
+              <a class="button button-secondary" href="https://t.me/+375445534241">Telegram</a>
+              <a class="button button-secondary" href="https://wa.me/375445534241">WhatsApp</a>
             </div>
           </div>
         </div>
@@ -453,18 +453,24 @@
       </div>
     </dialog>
     <dialog class="callback-dialog" id="callback-dialog" aria-labelledby="callback-title" aria-describedby="callback-description">
-      <button class="callback-close" id="callback-close" type="button" aria-label="Закрыть форму обратного звонка">×</button>
+      <button class="callback-close" id="callback-close" type="button" aria-label="Закрыть форму обратного звонка" autofocus>×</button>
       <h2 id="callback-title">Заказать звонок</h2>
-      <p id="callback-description">Укажите свой номер и отправьте готовое сообщение в выбранном мессенджере.</p>
-      <form class="callback-form" id="callback-form" method="dialog">
-        <label for="callback-phone">Ваш номер телефона</label>
-        <input type="tel" id="callback-phone" autocomplete="tel" maxlength="32" placeholder="+375 29 123-45-67" required autofocus>
-        <div class="contact-buttons">
-          <button class="button button-primary" type="submit" value="contact-whatsapp">В WhatsApp</button>
-          <button class="button button-secondary" type="submit" value="contact-telegram">В Telegram</button>
+      <p id="callback-description">Укажите свой номер или отправьте готовое сообщение в выбранном мессенджере</p>
+      <div class="callback-content">
+        <label for="callback-phone">Ваш номер телефона (необязательно)</label>
+        <input type="tel" id="callback-phone" autocomplete="tel" maxlength="32" placeholder="+375 29 123-45-67" aria-describedby="callback-phone-hint">
+        <small class="callback-feedback" id="callback-phone-hint" hidden>Введите от 7 до 15 цифр, чтобы добавить номер в сообщение.</small>
+        <div class="contact-buttons" role="group" aria-label="Мессенджеры для обратного звонка">
+          <a class="button button-primary" href="https://wa.me/375445534241" data-callback-draft>WhatsApp</a>
+          <a class="button button-secondary" href="https://t.me/+375445534241" data-callback-draft>Telegram</a>
+          <a class="button button-secondary" href="viber://chat?number=%2B375445534241">Viber</a>
         </div>
-      </form>
+        <div>
+          <button class="text-button callback-copy-button" id="callback-copy" type="button">Скопировать текст для Viber</button>
+          <output class="callback-feedback" id="callback-copy-status"></output>
+        </div>
+      </div>
     </dialog>
-    <script src="public/site.js" defer></script>
+    <script src="public/site.js?v=callback-links" defer></script>
   </body>
 </html>
