@@ -133,6 +133,101 @@
   margin: 10px 0 0;
 }
 
+.contact-instagram {
+  display: inline-block;
+  margin-top: 6px;
+  color: var(--wine);
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.contact-actions,
+.callback-form {
+  display: grid;
+  gap: 10px;
+}
+
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.contact-buttons .button {
+  min-height: 44px;
+  padding-inline: 15px;
+}
+
+.contact-buttons .callback-trigger[hidden] {
+  display: none;
+}
+
+.callback-dialog {
+  position: fixed;
+  width: min(460px, calc(100% - 28px));
+  max-height: calc(100dvh - 28px);
+  margin: auto;
+  padding: clamp(22px, 5vw, 36px);
+  border: 1px solid var(--line);
+  background: #fffdf9;
+  color: var(--ink);
+  box-shadow: 0 20px 70px rgba(47, 31, 25, .25);
+}
+
+.callback-dialog::backdrop {
+  background: rgba(45, 25, 36, .55);
+}
+
+.callback-dialog h2 {
+  padding-right: 30px;
+  font-size: clamp(28px, 5vw, 40px);
+}
+
+.callback-dialog p {
+  margin: 14px 0 20px;
+  color: var(--muted);
+}
+
+.callback-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #f4e8ed;
+  color: var(--wine);
+  font-size: 24px;
+}
+
+.callback-form input {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.callback-form .contact-buttons {
+  margin-top: 4px;
+}
+
+@media (max-width: 460px) {
+  .contact-actions {
+    width: 100%;
+  }
+
+  .contact-actions .contact-buttons:first-child > .button,
+  .callback-form .contact-buttons > .button {
+    flex: 1 1 auto;
+  }
+}
+
 @media (max-width: 960px) {
   .price-options {
     grid-template-columns: repeat(2, minmax(0, 1fr));

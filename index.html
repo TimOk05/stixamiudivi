@@ -418,9 +418,20 @@
         <div class="container contact-inner">
           <div>
             <h2 id="contacts-heading">Контакты</h2>
-            <p>Екатерина Саутина</p>
+            <p>Саутина Екатерина Николаевна<br>УНП&nbsp;AC2526701</p>
+            <a class="contact-instagram" href="https://www.instagram.com/stihamiudivi/" target="_blank" rel="noreferrer">Instagram · @stihamiudivi</a>
           </div>
-          <a class="button button-secondary" href="https://www.instagram.com/stihamiudivi/" target="_blank" rel="noreferrer">Instagram · @stihamiudivi</a>
+          <div class="contact-actions">
+            <div class="contact-buttons">
+              <a class="button button-primary" href="tel:+375445534241" aria-label="Позвонить по номеру +375 44 553-42-41">+375 44 553-42-41</a>
+              <button class="button button-secondary callback-trigger" id="callback-trigger" type="button" aria-haspopup="dialog" aria-controls="callback-dialog" hidden>Заказать звонок</button>
+            </div>
+            <div class="contact-buttons" role="group" aria-label="Мессенджеры">
+              <a class="button button-secondary" href="viber://chat?number=%2B375445534241">Viber</a>
+              <a class="button button-secondary" id="contact-telegram" href="https://t.me/+375445534241">Telegram</a>
+              <a class="button button-secondary" id="contact-whatsapp" href="https://wa.me/375445534241">WhatsApp</a>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -440,6 +451,19 @@
       <div class="works-dialog-viewport" id="works-dialog-viewport" tabindex="0" aria-label="Изображение работы, прокрутите для просмотра увеличенных деталей">
         <div class="works-dialog-canvas"><button class="works-dialog-zoom-target" id="works-dialog-zoom-target" type="button" aria-label="Увеличить изображение" aria-pressed="false" disabled><img id="works-dialog-image" alt="" draggable="false"></button></div>
       </div>
+    </dialog>
+    <dialog class="callback-dialog" id="callback-dialog" aria-labelledby="callback-title" aria-describedby="callback-description">
+      <button class="callback-close" id="callback-close" type="button" aria-label="Закрыть форму обратного звонка">×</button>
+      <h2 id="callback-title">Заказать звонок</h2>
+      <p id="callback-description">Укажите свой номер и отправьте готовое сообщение в выбранном мессенджере.</p>
+      <form class="callback-form" id="callback-form" method="dialog">
+        <label for="callback-phone">Ваш номер телефона</label>
+        <input type="tel" id="callback-phone" autocomplete="tel" maxlength="32" placeholder="+375 29 123-45-67" required autofocus>
+        <div class="contact-buttons">
+          <button class="button button-primary" type="submit" value="contact-whatsapp">В WhatsApp</button>
+          <button class="button button-secondary" type="submit" value="contact-telegram">В Telegram</button>
+        </div>
+      </form>
     </dialog>
     <script src="public/site.js" defer></script>
   </body>

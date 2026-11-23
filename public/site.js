@@ -611,6 +611,33 @@ document.querySelectorAll(".payment-copy").forEach((button) => {
   });
 });
 
+const callbackTrigger = document.querySelector("#callback-trigger");
+const callbackDialog = document.querySelector("#callback-dialog");
+const callbackForm = document.querySelector("#callback-form");
+const callbackPhone = document.querySelector("#callback-phone");
+
+if (callbackTrigger && callbackDialog?.showModal && callbackForm && callbackPhone) {
+  callbackTrigger.hidden = false;
+  callbackTrigger.addEventListener("click", () => callbackDialog.showModal());
+  document.querySelector("#callback-close")?.addEventListener("click", () => callbackDialog.close());
+  callbackPhone.addEventListener("input", () => callbackPhone.setCustomValidity(""));
+
+  callbackForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const phone = callbackPhone.value.replace(/[\s().-]/g, "");
+    if (!/^\+?\d{7,15}$/.test(phone)) {
+      callbackPhone.setCustomValidity("Введите номер телефона из 7–15 цифр.");
+      callbackPhone.reportValidity();
+      return;
+    }
+
+    const contact = document.getElementById(event.submitter?.value || "contact-whatsapp");
+    const destination = new URL(contact.href);
+    destination.searchParams.set("text", `Здравствуйте! Перезвоните мне, пожалуйста, по номеру ${phone}.`);
+    window.location.assign(destination.href);
+  });
+}
+
 const orderPrompt = document.querySelector("#order-prompt");
 const orderPromptClose = document.querySelector("#order-prompt-close");
 const orderPromptLater = document.querySelector("#order-prompt-later");
